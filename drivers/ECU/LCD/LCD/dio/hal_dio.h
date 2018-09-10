@@ -12,12 +12,12 @@
 #include "../dio/reg_addr.h"
 typedef enum
 {
-OUTPUT=0xFF,
+OUTPUT=0x01,
 INPUT =0X00,
 }dir;
 typedef enum
 {
-HIGH=0XFF,
+HIGH=0X01,
 LOW =0X00,
 }state;
 

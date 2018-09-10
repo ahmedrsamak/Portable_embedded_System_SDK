@@ -8,7 +8,7 @@
 
 void dio_set_port_dir(port_base port,dir mode)
 {
-	(*(volatile port_base*)(port-1)) = mode;
+	(*(volatile port_base*)(port-1)) = (mode|0xFF);
 }
 void dio_set_pin_dir(port_base port,u8 pin,dir mode)
 {
@@ -23,7 +23,7 @@ void dio_set_pin_dir(port_base port,u8 pin,dir mode)
 }
 void dio_write_port(port_base port,state mode)
 {
-	(*(volatile port_base*)(port))=mode;
+	(*(volatile port_base*)(port))=(mode|0xFF);
 }
 void dio_write_pin(port_base port,u8 pin,state mode)
 {
