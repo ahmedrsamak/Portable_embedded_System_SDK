@@ -17,7 +17,7 @@ int main(void)
 	obj.ctrl_port=PORTA;
 	obj.data_port=PORTB;
 	lcd_init(&obj);
-	lcd_out(&obj,1,13,"samak");
+	lcd_out(&obj,1,1,"samak");
     while (1) 
     {
     }

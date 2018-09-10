@@ -14,7 +14,14 @@
 #define bit_mode 4
 typedef enum
 {
- test=1,
+ LCD_CLEAR=0x01,	
+ LCD_SHIFT_RIGHT=0x06,
+ LCD_SHIFT_LEFT= 0x04,
+ LCD_OFF_CURSOR_OFF=0x08,
+ LCD_OFF_CURSOR_ON =0x0A ,
+ LCD_ON_CURSOR_OFF=0x0C,
+ LCD_ON_CURSOR_BLINKING=0x0F,
+  
 }enum_cmd;
 typedef struct
 {

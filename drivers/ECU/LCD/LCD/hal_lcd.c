@@ -47,6 +47,7 @@ send_4bit_data(0x0E,obj);
 send_4bit_data(0x01,obj);
 _delay_ms(2);
 send_4bit_data(0x06,obj);
+
 }
 void lcd_out(config_lcd_pin * obj,u8 y,u8 x,char * string)
 {
@@ -64,11 +65,14 @@ void lcd_out(config_lcd_pin * obj,u8 y,u8 x,char * string)
 	 {
 		 send_4bit_data(0x14,obj);
 	 }
-	 
 	dio_write_pin(obj->ctrl_port,obj->RS_pin,HIGH);
 	while(*string>0)
 	{
 	 send_4bit_data(*string++,obj);
 	}	
 }
-void lcd_cmd(config_lcd_pin * obj,enum_cmd cmd);
+void lcd_cmd(config_lcd_pin * obj,enum_cmd cmd)
+{
+	dio_write_pin(obj->ctrl_port,obj->RS_pin,LOW);
+	send_4bit_data(cmd,obj);
+}
