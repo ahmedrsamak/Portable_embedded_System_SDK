@@ -3,55 +3,57 @@ LCD.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .text         000000c8  00000000  00000000  00000054  2**1
+  0 .text         0000011a  00000000  00000000  00000074  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  1 .data         00000000  00800060  00800060  0000011c  2**0
+  1 .data         00000000  00800060  00800060  0000018e  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  2 .comment      00000030  00000000  00000000  0000011c  2**0
+  2 .bss          00000009  00800060  00800060  0000018e  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  0000018e  2**0
                   CONTENTS, READONLY
-  3 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  0000014c  2**2
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  000001c0  2**2
                   CONTENTS, READONLY
-  4 .debug_aranges 00000068  00000000  00000000  00000188  2**0
+  5 .debug_aranges 00000088  00000000  00000000  000001fc  2**0
                   CONTENTS, READONLY, DEBUGGING
-  5 .debug_info   000008ac  00000000  00000000  000001f0  2**0
+  6 .debug_info   00000a1a  00000000  00000000  00000284  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_abbrev 0000061e  00000000  00000000  00000a9c  2**0
+  7 .debug_abbrev 00000757  00000000  00000000  00000c9e  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_line   000002ac  00000000  00000000  000010ba  2**0
+  8 .debug_line   00000364  00000000  00000000  000013f5  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_frame  00000098  00000000  00000000  00001368  2**2
+  9 .debug_frame  000000c8  00000000  00000000  0000175c  2**2
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_str    000003de  00000000  00000000  00001400  2**0
+ 10 .debug_str    00000425  00000000  00000000  00001824  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_loc    000000b0  00000000  00000000  000017de  2**0
+ 11 .debug_loc    00000115  00000000  00000000  00001c49  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_ranges 00000048  00000000  00000000  0000188e  2**0
+ 12 .debug_ranges 00000058  00000000  00000000  00001d5e  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
 
 00000000 <__vectors>:
    0:	0c 94 2a 00 	jmp	0x54	; 0x54 <__ctors_end>
-   4:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
-   8:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
-   c:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
-  10:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
-  14:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
-  18:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
-  1c:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
-  20:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
-  24:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
-  28:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
-  2c:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
-  30:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
-  34:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
-  38:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
-  3c:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
-  40:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
-  44:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
-  48:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
-  4c:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
-  50:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+   4:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+   8:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+   c:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  10:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  14:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  18:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  1c:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  20:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  24:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  28:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  2c:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  30:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  34:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  38:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  3c:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  40:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  44:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  48:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  4c:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  50:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
 
 00000054 <__ctors_end>:
   54:	11 24       	eor	r1, r1
@@ -60,85 +62,148 @@ Disassembly of section .text:
   5a:	d8 e0       	ldi	r29, 0x08	; 8
   5c:	de bf       	out	0x3e, r29	; 62
   5e:	cd bf       	out	0x3d, r28	; 61
-  60:	0e 94 58 00 	call	0xb0	; 0xb0 <main>
-  64:	0c 94 62 00 	jmp	0xc4	; 0xc4 <_exit>
 
-00000068 <__bad_interrupt>:
-  68:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+00000060 <__do_clear_bss>:
+  60:	20 e0       	ldi	r18, 0x00	; 0
+  62:	a0 e6       	ldi	r26, 0x60	; 96
+  64:	b0 e0       	ldi	r27, 0x00	; 0
+  66:	01 c0       	rjmp	.+2      	; 0x6a <.do_clear_bss_start>
 
-0000006c <dio_set_port_dir>:
-		(*(volatile port_base*)(port-1))&=~(1<<pin);
-	}
-}
-void dio_write_port(port_base port,state mode)
+00000068 <.do_clear_bss_loop>:
+  68:	1d 92       	st	X+, r1
+
+0000006a <.do_clear_bss_start>:
+  6a:	a9 36       	cpi	r26, 0x69	; 105
+  6c:	b2 07       	cpc	r27, r18
+  6e:	e1 f7       	brne	.-8      	; 0x68 <.do_clear_bss_loop>
+  70:	0e 94 7b 00 	call	0xf6	; 0xf6 <main>
+  74:	0c 94 8b 00 	jmp	0x116	; 0x116 <_exit>
+
+00000078 <__bad_interrupt>:
+  78:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+0000007c <dio_set_pin_dir>:
 {
-	(*(volatile port_base*)(port))=mode;
-  6c:	e8 2f       	mov	r30, r24
-  6e:	f0 e0       	ldi	r31, 0x00	; 0
-  70:	31 97       	sbiw	r30, 0x01	; 1
-  72:	60 83       	st	Z, r22
-  74:	08 95       	ret
-
-00000076 <dio_write_pin>:
+	(*(volatile port_base*)(port-1)) = mode;
 }
-void dio_write_pin(port_base port,u8 pin,state mode)
+void dio_set_pin_dir(port_base port,u8 pin,dir mode)
 {
-	if (mode==HIGH)
-  76:	4f 3f       	cpi	r20, 0xFF	; 255
-  78:	69 f4       	brne	.+26     	; 0x94 <dio_write_pin+0x1e>
+	if (mode==OUTPUT)
+  7c:	4f 3f       	cpi	r20, 0xFF	; 255
+  7e:	69 f4       	brne	.+26     	; 0x9a <dio_set_pin_dir+0x1e>
 	{
-		(*(volatile port_base*)(port))|=(1<<pin);
-  7a:	e8 2f       	mov	r30, r24
-  7c:	f0 e0       	ldi	r31, 0x00	; 0
-  7e:	20 81       	ld	r18, Z
-  80:	81 e0       	ldi	r24, 0x01	; 1
-  82:	90 e0       	ldi	r25, 0x00	; 0
-  84:	02 c0       	rjmp	.+4      	; 0x8a <dio_write_pin+0x14>
-  86:	88 0f       	add	r24, r24
-  88:	99 1f       	adc	r25, r25
-  8a:	6a 95       	dec	r22
-  8c:	e2 f7       	brpl	.-8      	; 0x86 <dio_write_pin+0x10>
-  8e:	82 2b       	or	r24, r18
-  90:	80 83       	st	Z, r24
-  92:	08 95       	ret
+		(*(volatile port_base*)(port-1))|=(1<<pin);
+  80:	e8 2f       	mov	r30, r24
+  82:	f0 e0       	ldi	r31, 0x00	; 0
+  84:	22 91       	ld	r18, -Z
+  86:	81 e0       	ldi	r24, 0x01	; 1
+  88:	90 e0       	ldi	r25, 0x00	; 0
+  8a:	02 c0       	rjmp	.+4      	; 0x90 <dio_set_pin_dir+0x14>
+  8c:	88 0f       	add	r24, r24
+  8e:	99 1f       	adc	r25, r25
+  90:	6a 95       	dec	r22
+  92:	e2 f7       	brpl	.-8      	; 0x8c <dio_set_pin_dir+0x10>
+  94:	82 2b       	or	r24, r18
+  96:	80 83       	st	Z, r24
+  98:	08 95       	ret
 	}
 	else
 	{
-		(*(volatile port_base*)(port))&=~(1<<pin);
-  94:	e8 2f       	mov	r30, r24
-  96:	f0 e0       	ldi	r31, 0x00	; 0
-  98:	20 81       	ld	r18, Z
-  9a:	81 e0       	ldi	r24, 0x01	; 1
-  9c:	90 e0       	ldi	r25, 0x00	; 0
-  9e:	02 c0       	rjmp	.+4      	; 0xa4 <dio_write_pin+0x2e>
-  a0:	88 0f       	add	r24, r24
-  a2:	99 1f       	adc	r25, r25
-  a4:	6a 95       	dec	r22
-  a6:	e2 f7       	brpl	.-8      	; 0xa0 <dio_write_pin+0x2a>
-  a8:	80 95       	com	r24
-  aa:	82 23       	and	r24, r18
-  ac:	80 83       	st	Z, r24
-  ae:	08 95       	ret
+		(*(volatile port_base*)(port-1))&=~(1<<pin);
+  9a:	e8 2f       	mov	r30, r24
+  9c:	f0 e0       	ldi	r31, 0x00	; 0
+  9e:	22 91       	ld	r18, -Z
+  a0:	81 e0       	ldi	r24, 0x01	; 1
+  a2:	90 e0       	ldi	r25, 0x00	; 0
+  a4:	02 c0       	rjmp	.+4      	; 0xaa <dio_set_pin_dir+0x2e>
+  a6:	88 0f       	add	r24, r24
+  a8:	99 1f       	adc	r25, r25
+  aa:	6a 95       	dec	r22
+  ac:	e2 f7       	brpl	.-8      	; 0xa6 <dio_set_pin_dir+0x2a>
+  ae:	80 95       	com	r24
+  b0:	82 23       	and	r24, r18
+  b2:	80 83       	st	Z, r24
+  b4:	08 95       	ret
 
-000000b0 <main>:
- * Author : ahmed
+000000b6 <lcd_init>:
+	 
+	 
+ }	
+}
+void lcd_init(config_lcd_pin * obj)
+{
+  b6:	cf 93       	push	r28
+  b8:	df 93       	push	r29
+  ba:	ec 01       	movw	r28, r24
+	static short int i;
+	for (i=0;i<bit_mode;i++)
+  bc:	10 92 61 00 	sts	0x0061, r1	; 0x800061 <_edata+0x1>
+  c0:	10 92 60 00 	sts	0x0060, r1	; 0x800060 <_edata>
+  c4:	80 e0       	ldi	r24, 0x00	; 0
+  c6:	90 e0       	ldi	r25, 0x00	; 0
+	{
+		dio_set_pin_dir(obj->port,obj->data_pin[i],OUTPUT);
+  c8:	fe 01       	movw	r30, r28
+  ca:	e8 0f       	add	r30, r24
+  cc:	f9 1f       	adc	r31, r25
+  ce:	4f ef       	ldi	r20, 0xFF	; 255
+  d0:	61 81       	ldd	r22, Z+1	; 0x01
+  d2:	88 81       	ld	r24, Y
+  d4:	0e 94 3e 00 	call	0x7c	; 0x7c <dio_set_pin_dir>
+ }	
+}
+void lcd_init(config_lcd_pin * obj)
+{
+	static short int i;
+	for (i=0;i<bit_mode;i++)
+  d8:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <_edata>
+  dc:	90 91 61 00 	lds	r25, 0x0061	; 0x800061 <_edata+0x1>
+  e0:	01 96       	adiw	r24, 0x01	; 1
+  e2:	90 93 61 00 	sts	0x0061, r25	; 0x800061 <_edata+0x1>
+  e6:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <_edata>
+  ea:	84 30       	cpi	r24, 0x04	; 4
+  ec:	91 05       	cpc	r25, r1
+  ee:	64 f3       	brlt	.-40     	; 0xc8 <lcd_init+0x12>
+		
+	}
+
+ 
+ 
+}
+  f0:	df 91       	pop	r29
+  f2:	cf 91       	pop	r28
+  f4:	08 95       	ret
+
+000000f6 <main>:
  */ 
 #include "hal_lcd.h"
+config_lcd_pin obj;
 int main(void)
 {
-   dio_set_port_dir(PORTA,OUTPUT);
-  b0:	6f ef       	ldi	r22, 0xFF	; 255
-  b2:	8b e3       	ldi	r24, 0x3B	; 59
-  b4:	0e 94 36 00 	call	0x6c	; 0x6c <dio_set_port_dir>
-   dio_write_pin(PORTA,5,HIGH);
-  b8:	4f ef       	ldi	r20, 0xFF	; 255
-  ba:	65 e0       	ldi	r22, 0x05	; 5
-  bc:	8b e3       	ldi	r24, 0x3B	; 59
-  be:	0e 94 3b 00 	call	0x76	; 0x76 <dio_write_pin>
-  c2:	ff cf       	rjmp	.-2      	; 0xc2 <main+0x12>
+	obj.data_pin[0]=1;
+  f6:	e2 e6       	ldi	r30, 0x62	; 98
+  f8:	f0 e0       	ldi	r31, 0x00	; 0
+  fa:	81 e0       	ldi	r24, 0x01	; 1
+  fc:	81 83       	std	Z+1, r24	; 0x01
+    obj.data_pin[1]=3;
+  fe:	83 e0       	ldi	r24, 0x03	; 3
+ 100:	82 83       	std	Z+2, r24	; 0x02
+    obj.data_pin[2]=6;
+ 102:	86 e0       	ldi	r24, 0x06	; 6
+ 104:	83 83       	std	Z+3, r24	; 0x03
+	obj.data_pin[3]=7;
+ 106:	87 e0       	ldi	r24, 0x07	; 7
+ 108:	84 83       	std	Z+4, r24	; 0x04
+	obj.port=PORTA;
+ 10a:	8b e3       	ldi	r24, 0x3B	; 59
+ 10c:	80 83       	st	Z, r24
+	lcd_init(&obj);
+ 10e:	cf 01       	movw	r24, r30
+ 110:	0e 94 5b 00 	call	0xb6	; 0xb6 <lcd_init>
+ 114:	ff cf       	rjmp	.-2      	; 0x114 <main+0x1e>
 
-000000c4 <_exit>:
-  c4:	f8 94       	cli
+00000116 <_exit>:
+ 116:	f8 94       	cli
 
-000000c6 <__stop_program>:
-  c6:	ff cf       	rjmp	.-2      	; 0xc6 <__stop_program>
+00000118 <__stop_program>:
+ 118:	ff cf       	rjmp	.-2      	; 0x118 <__stop_program>

@@ -5,10 +5,15 @@
  * Author : ahmed
  */ 
 #include "hal_lcd.h"
+config_lcd_pin obj;
 int main(void)
 {
-   dio_set_port_dir(PORTA,OUTPUT);
-   dio_write_pin(PORTA,5,HIGH);
+	obj.data_pin[0]=1;
+    obj.data_pin[1]=3;
+    obj.data_pin[2]=6;
+	obj.data_pin[3]=7;
+	obj.port=PORTA;
+	lcd_init(&obj);
     while (1) 
     {
     }
