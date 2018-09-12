@@ -17,7 +17,7 @@ INPUT =0X00,
 }dir;
 typedef enum
 {
-HIGH=0XFF,
+HIGH=0X01,
 LOW =0X00,
 }state;
 
