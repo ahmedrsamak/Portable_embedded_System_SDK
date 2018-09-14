@@ -15,8 +15,8 @@
 typedef enum
 {
  LCD_CLEAR=0x01,	
- LCD_SHIFT_RIGHT=0x06,
- LCD_SHIFT_LEFT= 0x04,
+ LCD_SHIFT_RIGHT=0x1C,
+ LCD_SHIFT_LEFT= 0x18,
  LCD_OFF_CURSOR_OFF=0x08,
  LCD_OFF_CURSOR_ON =0x0A ,
  LCD_ON_CURSOR_OFF=0x0C,
@@ -33,7 +33,8 @@ typedef struct
 }config_lcd_pin;
 
 void lcd_init(config_lcd_pin * obj);
-void lcd_out(config_lcd_pin * obj,u8 y,u8 x,char * string);
+void lcd_out_chr(config_lcd_pin * obj,u8 y,u8 x,char  chr);
+void lcd_out_str(config_lcd_pin * obj,u8 y,u8 x,char * string);
 void lcd_cmd(config_lcd_pin * obj,enum_cmd cmd);
 
 

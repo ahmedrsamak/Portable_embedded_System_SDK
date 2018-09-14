@@ -27,7 +27,7 @@ static void send_4bit_data(u8 data,config_lcd_pin * obj)
  dio_write_pin(obj->ctrl_port,obj->E_pin,HIGH);
  _delay_us(1);
  dio_write_pin(obj->ctrl_port,obj->E_pin,LOW);
- _delay_us(100);
+ _delay_ms(1);
 }
 
 void lcd_init(config_lcd_pin * obj)
@@ -47,28 +47,20 @@ send_4bit_data(0x0E,obj);
 send_4bit_data(0x01,obj);
 _delay_ms(2);
 send_4bit_data(0x06,obj);
-
 }
-void lcd_out(config_lcd_pin * obj,u8 y,u8 x,char * string)
+void lcd_out_chr(config_lcd_pin * obj,u8 y,u8 x,char chr)
 {
-	u8 i;
+	static u8 addr[]={0x80,0xC0};
 	dio_write_pin(obj->ctrl_port,obj->RS_pin,LOW);
-	if (y==1)
-	{
-	 send_4bit_data(0x80,obj);
-	}
-	else
-	{
-	 send_4bit_data(0xC0,obj);
-	}
-	 for (i=0;i<(x-1);i++)
-	 {
-		 send_4bit_data(0x14,obj);
-	 }
+	send_4bit_data(addr[y-1] + x-1,obj);
 	dio_write_pin(obj->ctrl_port,obj->RS_pin,HIGH);
+	send_4bit_data(chr,obj);
+}
+void lcd_out_str(config_lcd_pin * obj,u8 y,u8 x,char * string)
+{
 	while(*string>0)
 	{
-	 send_4bit_data(*string++,obj);
+	 lcd_out_chr(obj,y,x++,*string++);
 	}	
 }
 void lcd_cmd(config_lcd_pin * obj,enum_cmd cmd)
