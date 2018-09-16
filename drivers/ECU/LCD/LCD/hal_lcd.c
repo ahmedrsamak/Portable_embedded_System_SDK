@@ -18,6 +18,7 @@ static void send_4bit_data(u8 data,config_lcd_pin * obj)
  dio_write_pin(obj->ctrl_port,obj->E_pin,HIGH);	
  _delay_us(1);
  dio_write_pin(obj->ctrl_port,obj->E_pin,LOW);
+_delay_us(100);
  for (i=0;i<bit_mode;i++)
  {
 	 dio_write_pin(obj->data_port,obj->data_pin[i],(data>>i)&0x01);
