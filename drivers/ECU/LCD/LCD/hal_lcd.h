@@ -9,6 +9,7 @@
 #ifndef HAL_LCD_H_
 #define HAL_LCD_H_
 
+
 #include "DIO/hal_dio.h"
 #include <util/delay.h>
 #define bit_mode 4
@@ -35,6 +36,7 @@ typedef struct
 void lcd_init(config_lcd_pin * obj);
 void lcd_out_chr(config_lcd_pin * obj,u8 y,u8 x,char  chr);
 void lcd_out_str(config_lcd_pin * obj,u8 y,u8 x,char * string);
+void lcd_out_num(config_lcd_pin * obj,u8 y,u8 x,s16 num);
 void lcd_cmd(config_lcd_pin * obj,enum_cmd cmd);
 
 

@@ -4,8 +4,9 @@
  * Created: 9/10/2018 2:11:27 AM
  *  Author: ahmed
  */ 
-#include "hal_lcd.h"
 
+#include <stdlib.h>
+#include "hal_lcd.h"
 static void send_4bit_data(u8 data,config_lcd_pin * obj)
 {
    static short int i;
@@ -17,8 +18,6 @@ static void send_4bit_data(u8 data,config_lcd_pin * obj)
  dio_write_pin(obj->ctrl_port,obj->E_pin,HIGH);	
  _delay_us(1);
  dio_write_pin(obj->ctrl_port,obj->E_pin,LOW);
- _delay_us(100);
- 
  for (i=0;i<bit_mode;i++)
  {
 	 dio_write_pin(obj->data_port,obj->data_pin[i],(data>>i)&0x01);
@@ -61,6 +60,19 @@ void lcd_out_str(config_lcd_pin * obj,u8 y,u8 x,char * string)
 	while(*string>0)
 	{
 	 lcd_out_chr(obj,y,x++,*string++);
+	}	
+}
+void lcd_out_num(config_lcd_pin * obj,u8 y,u8 x,s16 num)
+{
+	u8 ArrayIndex = 0;
+	char s8DisplayStr[6] = {0};
+	/* convert number to ASCII */
+
+	itoa(num, s8DisplayStr, 10);
+
+	for(ArrayIndex = 0; s8DisplayStr[ArrayIndex] != 0; ArrayIndex++)
+	{
+		lcd_out_chr(obj,y,x++,s8DisplayStr[ArrayIndex]);
 	}	
 }
 void lcd_cmd(config_lcd_pin * obj,enum_cmd cmd)
