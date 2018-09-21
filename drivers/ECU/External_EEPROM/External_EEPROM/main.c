@@ -2,18 +2,17 @@
  * External_EEPROM.c
  *
  * Created: 9/13/2018 10:17:23 AM
- * Author : ahmed
+ * Author : ahmed samak
  */ 
 #include "LCD/hal_lcd.h"
-#include "TWI/hal_twi.h"
-#include <stdlib.h>
+#include "ext_eeprom.h"
+
+u8 y;
+int x=0;
 config_lcd_pin LCD1;
-char _data[7];
 int main(void)
 {
-	itoa(16,_data,10);
-	//char _data;
-	//_data=int_to_str(15,2);
+	dio_set_port_dir(PORTA,OUTPUT);
 	LCD1.ctrl_port=PORTB;
 	LCD1.data_port=PORTB;
 	LCD1.RS_pin=2;
@@ -22,27 +21,15 @@ int main(void)
 	LCD1.data_pin[1]=5;
 	LCD1.data_pin[2]=6;
 	LCD1.data_pin[3]=7;
+    lcd_init(&LCD1);
 	
-   lcd_init(&LCD1);
-   TWI_Init(100,0x01);
-   lcd_cmd(&LCD1,LCD_ON_CURSOR_OFF);
-   lcd_out(&LCD1,1,1,"Start");
-   _delay_ms(100);
-   lcd_out(&LCD1,2,1,_data);
-   TWI_Start();
-   TWI_Write(0b10100000);
-   _delay_ms(500);
-   TWI_Write(0xFF);
-   _delay_ms(500);
-   TWI_Write(0xFE);
-   _delay_ms(500);
-   TWI_Stop();
-   _delay_ms(1000);
-   TWI_Start();
-   TWI_Write(0b10100001);
-  // data=TWI_Read_With_NACK();
-   TWI_Stop();
-  
+    ext_eeprom_init(100);
+	ext_eeprom_write(0,01,57);
+	_delay_ms(10);
+	y=ext_eeprom_read(0,01);
+   lcd_cmd(&LCD1,LCD_CLEAR);
+   lcd_out_str(&LCD1,1,1,"data is: ");
+   lcd_out_num(&LCD1,2,1,(u8)y);
     while (1) 
     {
     }

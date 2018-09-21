@@ -20,8 +20,9 @@
 #define TW_MT_DATA_ACK   0x28 // Data byte has been transmitted and ACK has been received from Slave.
 #define TW_MR_DATA_ACK   0x50 // Master received data and send ACK
 #define TW_MR_DATA_NACK  0x58 // MAster received data but don't send ACK
-
-
+#define TW_MR_SLA_NACK   0x48 // SLA+R transmitted, NACK received
+#define ERROR            0x00 // return error
+#define SUCCESS	         0xFF 
 void TWI_Init(u16 freq,u8 slave_addr);
 void TWI_Start(void);
 void TWI_Stop(void);
