@@ -53,10 +53,6 @@ void lcd_out_chr(config_lcd_pin * obj,u8 y,u8 x,char chr)
 	static u8 addr[]={0x80,0xC0};
 	dio_write_pin(obj->ctrl_port,obj->RS_pin,LOW);
 	send_4bit_data(addr[y-1] + x-1,obj);
-<<<<<<< HEAD
-	
-=======
->>>>>>> LCD
 	dio_write_pin(obj->ctrl_port,obj->RS_pin,HIGH);
 	send_4bit_data(chr,obj);
 }
