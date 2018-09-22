@@ -22,8 +22,12 @@ int main(void)
 	lcd_cmd(&obj,LCD_CLEAR);
 	lcd_out_str(&obj,1,1,"samak");
 	lcd_out_str(&obj,2,1,"samak");
+	_delay_ms(1000);
+	lcd_cmd(&obj,LCD_CLEAR);
 	lcd_out_str(&obj,1,1,"1234567891234567");
 	lcd_out_chr(&obj,2,1,'b');
+	_delay_ms(1000);
+	lcd_cmd(&obj,LCD_CLEAR);
 	lcd_out_num(&obj,2,3,-500);
 	lcd_cmd(&obj,LCD_SHIFT_RIGHT);
 	

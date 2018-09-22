@@ -38,7 +38,7 @@ void dio_write_port(port_base port,state mode)
 	{
 		(*(volatile port_base*)(port))=0xFF;
 	}
-	else if(mode == INPUT)
+	else if(mode == LOW)
 	{
 		(*(volatile port_base*)(port))=0x00;
 	}
