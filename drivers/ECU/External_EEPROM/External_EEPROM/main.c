@@ -21,11 +21,11 @@ int main(void)
 	LCD1.data_pin[2]=6;
 	LCD1.data_pin[3]=7;
     lcd_init(&LCD1);
-	lcd_out_str(&LCD1,1,1,"Start1");
+	lcd_out_str(&LCD1,1,1,"Start");
 	_delay_ms(1000);
 	lcd_cmd(&LCD1,LCD_CLEAR);	
     ext_eeprom_init(100);
-	//ext_eeprom_write(0,01,57);
+	ext_eeprom_write(0,01,57);
 	_delay_ms(10);
 	y=ext_eeprom_read(0,01);
 	lcd_cmd(&LCD1,LCD_CLEAR);
