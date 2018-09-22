@@ -12,9 +12,13 @@ void dio_set_port_dir(port_base port,dir mode)
 	{
 		(*(volatile port_base*)(port-1))=0xFF;
 	}
-	else
+	else if(mode == INPUT)
 	{
 		(*(volatile port_base*)(port-1))=0x00;
+	}
+	else
+	{
+	 (*(volatile port_base*)(port-1))=mode;	
 	}
 }
 void dio_set_pin_dir(port_base port,u8 pin,dir mode)
@@ -34,9 +38,13 @@ void dio_write_port(port_base port,state mode)
 	{
 		(*(volatile port_base*)(port))=0xFF;
 	}
-	else
+	else if(mode == INPUT)
 	{
 		(*(volatile port_base*)(port))=0x00;
+	}
+	else
+	{
+		(*(volatile port_base*)(port))=mode;
 	}
 }
 void dio_write_pin(port_base port,u8 pin,state mode)
@@ -56,7 +64,5 @@ u8 dio_read_port(port_base port)
 }
 u8 dio_read_pin(port_base port,u8 pin)
 {
-	
-	return ((*(volatile port_base*)(port-2))&(1<<pin))>>pin;
-	
+	return ((*(volatile port_base*)(port-2))&(1<<pin))>>pin;	
 }
