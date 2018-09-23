@@ -4,7 +4,7 @@
 
 dio\hal_dio.c
 
-hal_lcd.c
+ecu_lcd.c
 
 main.c
 

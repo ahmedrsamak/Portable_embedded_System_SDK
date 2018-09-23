@@ -178,7 +178,7 @@ void dio_write_pin(port_base port,u8 pin,state mode)
  */ 
 
 #include <stdlib.h>
-#include "hal_lcd.h"
+#include "ecu_lcd.h"
 static void send_4bit_data(u8 data,config_lcd_pin * obj)
 {
  106:	ef 92       	push	r14
@@ -215,7 +215,7 @@ static void send_4bit_data(u8 data,config_lcd_pin * obj)
  140:	88 81       	ld	r24, Y
  142:	0e 94 66 00 	call	0xcc	; 0xcc <dio_write_pin>
 #include <stdlib.h>
-#include "hal_lcd.h"
+#include "ecu_lcd.h"
 static void send_4bit_data(u8 data,config_lcd_pin * obj)
 {
    static short int i;
@@ -654,7 +654,7 @@ void lcd_cmd(config_lcd_pin * obj,enum_cmd cmd)
 
 000003c4 <main>:
  */ 
-#include "hal_lcd.h"
+#include "ecu_lcd.h"
 config_lcd_pin obj;
 int main(void)
 {

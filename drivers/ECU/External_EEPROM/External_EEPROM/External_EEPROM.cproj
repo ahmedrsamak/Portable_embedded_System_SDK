@@ -136,10 +136,10 @@
     <Compile Include="common.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="ext_eeprom.c">
+    <Compile Include="ecu_ext_eeprom.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="ext_eeprom.h">
+    <Compile Include="ecu_ext_eeprom.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="LCD\DIO\hal_dio.c">
@@ -148,10 +148,10 @@
     <Compile Include="LCD\DIO\hal_dio.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="LCD\hal_lcd.c">
+    <Compile Include="LCD\ecu_lcd.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="LCD\hal_lcd.h">
+    <Compile Include="LCD\ecu_lcd.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="main.c">

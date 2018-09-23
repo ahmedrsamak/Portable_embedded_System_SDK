@@ -1,4 +1,4 @@
-main.d main.o: .././main.c .././rtc.h .././TWI/hal_twi.h \
+main.d main.o: .././main.c .././ecu_rtc.h .././TWI/hal_twi.h \
  .././TWI/../common.h .././TWI/../reg_addr.h .././LCD/ecu_lcd.h \
  .././LCD/../LCD/DIO/hal_dio.h .././LCD/../LCD/DIO/../../common.h \
  .././LCD/../LCD/DIO/../../reg_addr.h \
@@ -9,7 +9,7 @@ main.d main.o: .././main.c .././rtc.h .././TWI/hal_twi.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h
 
-.././rtc.h:
+.././ecu_rtc.h:
 
 .././TWI/hal_twi.h:
 

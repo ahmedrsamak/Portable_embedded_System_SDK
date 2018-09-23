@@ -8,7 +8,7 @@ LCD\ecu_lcd.c
 
 main.c
 
-rtc.c
+ecu_rtc.c
 
 TWI\hal_twi.c
 

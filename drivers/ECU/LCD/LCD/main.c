@@ -4,7 +4,7 @@
  * Created: 9/10/2018 2:09:53 AM
  * Author : ahmed
  */ 
-#include "hal_lcd.h"
+#include "ecu_lcd.h"
 config_lcd_pin obj;
 int main(void)
 {

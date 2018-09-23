@@ -4,8 +4,8 @@
  * Created: 9/13/2018 10:17:23 AM
  * Author : ahmed samak
  */ 
-#include "LCD/hal_lcd.h"
-#include "ext_eeprom.h"
+#include "LCD/ecu_lcd.h"
+#include "ecu_ext_eeprom.h"
 
 u8 y;
 int x=0;

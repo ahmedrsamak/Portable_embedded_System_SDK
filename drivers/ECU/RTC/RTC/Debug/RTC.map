@@ -50,13 +50,13 @@ Discarded input sections
  .text          0x00000000        0x0 main.o
  .data          0x00000000        0x0 main.o
  .bss           0x00000000        0x0 main.o
- .text          0x00000000        0x0 rtc.o
- .data          0x00000000        0x0 rtc.o
- .bss           0x00000000        0x0 rtc.o
+ .text          0x00000000        0x0 ecu_rtc.o
+ .data          0x00000000        0x0 ecu_rtc.o
+ .bss           0x00000000        0x0 ecu_rtc.o
  .text.rtc_set_date
-                0x00000000       0x3a rtc.o
+                0x00000000       0x3a ecu_rtc.o
  .text.rtc_read_date
-                0x00000000       0x58 rtc.o
+                0x00000000       0x58 ecu_rtc.o
  .text          0x00000000        0x0 TWI/hal_twi.o
  .data          0x00000000        0x0 TWI/hal_twi.o
  .bss           0x00000000        0x0 TWI/hal_twi.o
@@ -194,7 +194,7 @@ LOAD C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/
 LOAD LCD/DIO/hal_dio.o
 LOAD LCD/ecu_lcd.o
 LOAD main.o
-LOAD rtc.o
+LOAD ecu_rtc.o
 LOAD TWI/hal_twi.o
 START GROUP
 LOAD c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a
@@ -408,13 +408,13 @@ END GROUP
  .text.main     0x000003a0       0xa8 main.o
                 0x000003a0                main
  .text.rtc_init
-                0x00000448       0x2c rtc.o
+                0x00000448       0x2c ecu_rtc.o
                 0x00000448                rtc_init
  .text.rtc_set_time
-                0x00000474       0x3a rtc.o
+                0x00000474       0x3a ecu_rtc.o
                 0x00000474                rtc_set_time
  .text.rtc_read_time
-                0x000004ae       0x58 rtc.o
+                0x000004ae       0x58 ecu_rtc.o
                 0x000004ae                rtc_read_time
  .text.TWI_Init
                 0x00000506       0x30 TWI/hal_twi.o
@@ -561,7 +561,7 @@ END GROUP
                                  0x31 (size before relaxing)
  .comment       0x00000030       0x31 LCD/ecu_lcd.o
  .comment       0x00000030       0x31 main.o
- .comment       0x00000030       0x31 rtc.o
+ .comment       0x00000030       0x31 ecu_rtc.o
  .comment       0x00000030       0x31 TWI/hal_twi.o
 
 .note.gnu.avr.deviceinfo
@@ -593,7 +593,7 @@ END GROUP
  .debug_aranges
                 0x00000090       0x20 main.o
  .debug_aranges
-                0x000000b0       0x40 rtc.o
+                0x000000b0       0x40 ecu_rtc.o
  .debug_aranges
                 0x000000f0       0x50 TWI/hal_twi.o
 
@@ -606,7 +606,7 @@ END GROUP
  .debug_info    0x000004e6      0x295 LCD/DIO/hal_dio.o
  .debug_info    0x0000077b      0x832 LCD/ecu_lcd.o
  .debug_info    0x00000fad      0x391 main.o
- .debug_info    0x0000133e      0x4c4 rtc.o
+ .debug_info    0x0000133e      0x4c4 ecu_rtc.o
  .debug_info    0x00001802      0x1cd TWI/hal_twi.o
 
 .debug_abbrev   0x00000000      0xb92
@@ -615,27 +615,27 @@ END GROUP
  .debug_abbrev  0x000004a3       0xdb LCD/DIO/hal_dio.o
  .debug_abbrev  0x0000057e      0x272 LCD/ecu_lcd.o
  .debug_abbrev  0x000007f0      0x174 main.o
- .debug_abbrev  0x00000964      0x13d rtc.o
+ .debug_abbrev  0x00000964      0x13d ecu_rtc.o
  .debug_abbrev  0x00000aa1       0xf1 TWI/hal_twi.o
 
-.debug_line     0x00000000      0xb22
+.debug_line     0x00000000      0xb2a
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x115 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega32/avr5/crtatmega32.o
  .debug_line    0x00000115      0x143 LCD/DIO/hal_dio.o
  .debug_line    0x00000258      0x334 LCD/ecu_lcd.o
- .debug_line    0x0000058c      0x1b2 main.o
- .debug_line    0x0000073e      0x279 rtc.o
- .debug_line    0x000009b7      0x16b TWI/hal_twi.o
+ .debug_line    0x0000058c      0x1b6 main.o
+ .debug_line    0x00000742      0x27d ecu_rtc.o
+ .debug_line    0x000009bf      0x16b TWI/hal_twi.o
 
 .debug_frame    0x00000000      0x324
  *(.debug_frame)
  .debug_frame   0x00000000       0x74 LCD/DIO/hal_dio.o
  .debug_frame   0x00000074      0x12c LCD/ecu_lcd.o
  .debug_frame   0x000001a0       0x34 main.o
- .debug_frame   0x000001d4       0xc4 rtc.o
+ .debug_frame   0x000001d4       0xc4 ecu_rtc.o
  .debug_frame   0x00000298       0x8c TWI/hal_twi.o
 
-.debug_str      0x00000000      0x67a
+.debug_str      0x00000000      0x67e
  *(.debug_str)
  .debug_str     0x00000000      0x196 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega32/avr5/crtatmega32.o
  .debug_str     0x00000196      0x20c LCD/DIO/hal_dio.o
@@ -644,9 +644,9 @@ END GROUP
                                 0x36e (size before relaxing)
  .debug_str     0x0000057a       0x3a main.o
                                 0x2b8 (size before relaxing)
- .debug_str     0x000005b4       0x8f rtc.o
-                                0x275 (size before relaxing)
- .debug_str     0x00000643       0x37 TWI/hal_twi.o
+ .debug_str     0x000005b4       0x93 ecu_rtc.o
+                                0x279 (size before relaxing)
+ .debug_str     0x00000647       0x37 TWI/hal_twi.o
                                 0x223 (size before relaxing)
 
 .debug_loc      0x00000000      0xe0b
@@ -654,7 +654,7 @@ END GROUP
  .debug_loc     0x00000000      0x105 LCD/DIO/hal_dio.o
  .debug_loc     0x00000105      0x7e2 LCD/ecu_lcd.o
  .debug_loc     0x000008e7       0x90 main.o
- .debug_loc     0x00000977      0x3d0 rtc.o
+ .debug_loc     0x00000977      0x3d0 ecu_rtc.o
  .debug_loc     0x00000d47       0xc4 TWI/hal_twi.o
 
 .debug_macinfo
@@ -680,7 +680,7 @@ END GROUP
  .debug_ranges  0x00000000       0x38 LCD/DIO/hal_dio.o
  .debug_ranges  0x00000038       0x38 LCD/ecu_lcd.o
  .debug_ranges  0x00000070       0x10 main.o
- .debug_ranges  0x00000080       0x30 rtc.o
+ .debug_ranges  0x00000080       0x30 ecu_rtc.o
  .debug_ranges  0x000000b0       0x40 TWI/hal_twi.o
 
 .debug_macro

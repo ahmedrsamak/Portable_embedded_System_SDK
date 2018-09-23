@@ -43,7 +43,7 @@ C_SRCS +=  \
 ../LCD/DIO/hal_dio.c \
 ../LCD/ecu_lcd.c \
 ../main.c \
-../rtc.c \
+../ecu_rtc.c \
 ../TWI/hal_twi.c
 
 
@@ -57,28 +57,28 @@ OBJS +=  \
 LCD/DIO/hal_dio.o \
 LCD/ecu_lcd.o \
 main.o \
-rtc.o \
+ecu_rtc.o \
 TWI/hal_twi.o
 
 OBJS_AS_ARGS +=  \
 LCD/DIO/hal_dio.o \
 LCD/ecu_lcd.o \
 main.o \
-rtc.o \
+ecu_rtc.o \
 TWI/hal_twi.o
 
 C_DEPS +=  \
 LCD/DIO/hal_dio.d \
 LCD/ecu_lcd.d \
 main.d \
-rtc.d \
+ecu_rtc.d \
 TWI/hal_twi.d
 
 C_DEPS_AS_ARGS +=  \
 LCD/DIO/hal_dio.d \
 LCD/ecu_lcd.d \
 main.d \
-rtc.d \
+ecu_rtc.d \
 TWI/hal_twi.d
 
 OUTPUT_FILE_PATH +=RTC.elf
@@ -116,7 +116,7 @@ LCD/ecu_lcd.o: ../LCD/ecu_lcd.c
 	@echo Finished building: $<
 	
 
-./rtc.o: .././rtc.c
+./ecu_rtc.o: .././ecu_rtc.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 

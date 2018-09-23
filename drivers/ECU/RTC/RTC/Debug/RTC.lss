@@ -19,15 +19,15 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING
   7 .debug_abbrev 00000b92  00000000  00000000  000022a3  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   00000b22  00000000  00000000  00002e35  2**0
+  8 .debug_line   00000b2a  00000000  00000000  00002e35  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  00000324  00000000  00000000  00003958  2**2
+  9 .debug_frame  00000324  00000000  00000000  00003960  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    0000067a  00000000  00000000  00003c7c  2**0
+ 10 .debug_str    0000067e  00000000  00000000  00003c84  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    00000e0b  00000000  00000000  000042f6  2**0
+ 11 .debug_loc    00000e0b  00000000  00000000  00004302  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 000000f0  00000000  00000000  00005101  2**0
+ 12 .debug_ranges 000000f0  00000000  00000000  0000510d  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -631,7 +631,7 @@ void lcd_out_num(config_lcd_pin * obj,u8 y,u8 x,s16 num)
 
 000003a0 <main>:
 
-#include "rtc.h"
+#include "ecu_rtc.h"
 #include "LCD/ecu_lcd.h"
 config_lcd_pin LCD1;
 int main(void)
