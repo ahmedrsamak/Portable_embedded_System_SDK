@@ -1,0 +1,350 @@
+
+7-SEGMANT.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         000001e4  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000000  00800060  00800060  00000258  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          00000005  00800060  00800060  00000258  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  00000258  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000288  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 00000090  00000000  00000000  000002c4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   00000b10  00000000  00000000  00000354  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 000007ef  00000000  00000000  00000e64  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   00000496  00000000  00000000  00001653  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  00000120  00000000  00000000  00001aec  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    00000473  00000000  00000000  00001c0c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    0000036c  00000000  00000000  0000207f  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000060  00000000  00000000  000023eb  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 2a 00 	jmp	0x54	; 0x54 <__ctors_end>
+   4:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+   8:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+   c:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  10:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  14:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  18:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  1c:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  20:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  24:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  28:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  2c:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  30:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  34:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  38:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  3c:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  40:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  44:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  48:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  4c:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  50:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+
+00000054 <__ctors_end>:
+  54:	11 24       	eor	r1, r1
+  56:	1f be       	out	0x3f, r1	; 63
+  58:	cf e5       	ldi	r28, 0x5F	; 95
+  5a:	d8 e0       	ldi	r29, 0x08	; 8
+  5c:	de bf       	out	0x3e, r29	; 62
+  5e:	cd bf       	out	0x3d, r28	; 61
+
+00000060 <__do_clear_bss>:
+  60:	20 e0       	ldi	r18, 0x00	; 0
+  62:	a0 e6       	ldi	r26, 0x60	; 96
+  64:	b0 e0       	ldi	r27, 0x00	; 0
+  66:	01 c0       	rjmp	.+2      	; 0x6a <.do_clear_bss_start>
+
+00000068 <.do_clear_bss_loop>:
+  68:	1d 92       	st	X+, r1
+
+0000006a <.do_clear_bss_start>:
+  6a:	a5 36       	cpi	r26, 0x65	; 101
+  6c:	b2 07       	cpc	r27, r18
+  6e:	e1 f7       	brne	.-8      	; 0x68 <.do_clear_bss_loop>
+  70:	0e 94 cf 00 	call	0x19e	; 0x19e <main>
+  74:	0c 94 f0 00 	jmp	0x1e0	; 0x1e0 <_exit>
+
+00000078 <__bad_interrupt>:
+  78:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+0000007c <dio_set_pin_dir>:
+	{
+		(*(volatile port_base*)(port))=0x00;
+	}
+	else
+	{
+		(*(volatile port_base*)(port))=mode;
+  7c:	41 30       	cpi	r20, 0x01	; 1
+  7e:	69 f4       	brne	.+26     	; 0x9a <dio_set_pin_dir+0x1e>
+  80:	e8 2f       	mov	r30, r24
+  82:	f0 e0       	ldi	r31, 0x00	; 0
+  84:	22 91       	ld	r18, -Z
+  86:	81 e0       	ldi	r24, 0x01	; 1
+  88:	90 e0       	ldi	r25, 0x00	; 0
+  8a:	02 c0       	rjmp	.+4      	; 0x90 <dio_set_pin_dir+0x14>
+  8c:	88 0f       	add	r24, r24
+  8e:	99 1f       	adc	r25, r25
+  90:	6a 95       	dec	r22
+  92:	e2 f7       	brpl	.-8      	; 0x8c <dio_set_pin_dir+0x10>
+  94:	82 2b       	or	r24, r18
+  96:	80 83       	st	Z, r24
+  98:	08 95       	ret
+  9a:	e8 2f       	mov	r30, r24
+  9c:	f0 e0       	ldi	r31, 0x00	; 0
+  9e:	22 91       	ld	r18, -Z
+  a0:	81 e0       	ldi	r24, 0x01	; 1
+  a2:	90 e0       	ldi	r25, 0x00	; 0
+  a4:	02 c0       	rjmp	.+4      	; 0xaa <dio_set_pin_dir+0x2e>
+  a6:	88 0f       	add	r24, r24
+  a8:	99 1f       	adc	r25, r25
+  aa:	6a 95       	dec	r22
+  ac:	e2 f7       	brpl	.-8      	; 0xa6 <dio_set_pin_dir+0x2a>
+  ae:	80 95       	com	r24
+  b0:	82 23       	and	r24, r18
+  b2:	80 83       	st	Z, r24
+  b4:	08 95       	ret
+
+000000b6 <dio_write_pin>:
+	}
+}
+void dio_write_pin(port_base port,u8 pin,state mode)
+{
+	if (mode==HIGH)
+  b6:	41 30       	cpi	r20, 0x01	; 1
+  b8:	69 f4       	brne	.+26     	; 0xd4 <dio_write_pin+0x1e>
+	{
+		(*(volatile port_base*)(port))|=(1<<pin);
+  ba:	e8 2f       	mov	r30, r24
+  bc:	f0 e0       	ldi	r31, 0x00	; 0
+  be:	20 81       	ld	r18, Z
+  c0:	81 e0       	ldi	r24, 0x01	; 1
+  c2:	90 e0       	ldi	r25, 0x00	; 0
+  c4:	02 c0       	rjmp	.+4      	; 0xca <dio_write_pin+0x14>
+  c6:	88 0f       	add	r24, r24
+  c8:	99 1f       	adc	r25, r25
+  ca:	6a 95       	dec	r22
+  cc:	e2 f7       	brpl	.-8      	; 0xc6 <dio_write_pin+0x10>
+  ce:	82 2b       	or	r24, r18
+  d0:	80 83       	st	Z, r24
+  d2:	08 95       	ret
+	}
+	else
+	{
+		(*(volatile port_base*)(port))&=~(1<<pin);
+  d4:	e8 2f       	mov	r30, r24
+  d6:	f0 e0       	ldi	r31, 0x00	; 0
+  d8:	20 81       	ld	r18, Z
+  da:	81 e0       	ldi	r24, 0x01	; 1
+  dc:	90 e0       	ldi	r25, 0x00	; 0
+  de:	02 c0       	rjmp	.+4      	; 0xe4 <dio_write_pin+0x2e>
+  e0:	88 0f       	add	r24, r24
+  e2:	99 1f       	adc	r25, r25
+  e4:	6a 95       	dec	r22
+  e6:	e2 f7       	brpl	.-8      	; 0xe0 <dio_write_pin+0x2a>
+  e8:	80 95       	com	r24
+  ea:	82 23       	and	r24, r18
+  ec:	80 83       	st	Z, r24
+  ee:	08 95       	ret
+
+000000f0 <sev_segm_init>:
+ * Created: 9/23/2018 11:25:06 AM
+ *  Author: ahmed
+ */ 
+#include "ecu_7segm.h"
+void sev_segm_init(config_7segm * obj)
+{
+  f0:	ef 92       	push	r14
+  f2:	ff 92       	push	r15
+  f4:	0f 93       	push	r16
+  f6:	1f 93       	push	r17
+  f8:	cf 93       	push	r28
+  fa:	df 93       	push	r29
+  fc:	8c 01       	movw	r16, r24
+  fe:	ec 01       	movw	r28, r24
+ 100:	21 96       	adiw	r28, 0x01	; 1
+ 102:	7c 01       	movw	r14, r24
+ 104:	85 e0       	ldi	r24, 0x05	; 5
+ 106:	e8 0e       	add	r14, r24
+ 108:	f1 1c       	adc	r15, r1
+	for (int i=0;i<4;i++)
+	{
+		dio_set_pin_dir(obj->port,obj->pins[i],OUTPUT);
+ 10a:	69 91       	ld	r22, Y+
+ 10c:	41 e0       	ldi	r20, 0x01	; 1
+ 10e:	f8 01       	movw	r30, r16
+ 110:	80 81       	ld	r24, Z
+ 112:	0e 94 3e 00 	call	0x7c	; 0x7c <dio_set_pin_dir>
+ *  Author: ahmed
+ */ 
+#include "ecu_7segm.h"
+void sev_segm_init(config_7segm * obj)
+{
+	for (int i=0;i<4;i++)
+ 116:	ce 15       	cp	r28, r14
+ 118:	df 05       	cpc	r29, r15
+ 11a:	b9 f7       	brne	.-18     	; 0x10a <sev_segm_init+0x1a>
+	{
+		dio_set_pin_dir(obj->port,obj->pins[i],OUTPUT);
+	}
+}
+ 11c:	df 91       	pop	r29
+ 11e:	cf 91       	pop	r28
+ 120:	1f 91       	pop	r17
+ 122:	0f 91       	pop	r16
+ 124:	ff 90       	pop	r15
+ 126:	ef 90       	pop	r14
+ 128:	08 95       	ret
+
+0000012a <sev_segm_out>:
+void sev_segm_out(config_7segm * obj , u8 num)
+{
+ 12a:	af 92       	push	r10
+ 12c:	bf 92       	push	r11
+ 12e:	cf 92       	push	r12
+ 130:	df 92       	push	r13
+ 132:	ef 92       	push	r14
+ 134:	ff 92       	push	r15
+ 136:	0f 93       	push	r16
+ 138:	1f 93       	push	r17
+ 13a:	cf 93       	push	r28
+ 13c:	df 93       	push	r29
+ 13e:	7c 01       	movw	r14, r24
+ 140:	ec 01       	movw	r28, r24
+ 142:	21 96       	adiw	r28, 0x01	; 1
+	for (int i=0;i<4;i++)
+ 144:	a1 2c       	mov	r10, r1
+ 146:	b1 2c       	mov	r11, r1
+	{
+		dio_write_pin(obj->port,obj->pins[i],((1<<i) & num)>>i); // 0111 // 1 //  
+ 148:	cc 24       	eor	r12, r12
+ 14a:	c3 94       	inc	r12
+ 14c:	d1 2c       	mov	r13, r1
+ 14e:	06 2f       	mov	r16, r22
+ 150:	10 e0       	ldi	r17, 0x00	; 0
+ 152:	69 91       	ld	r22, Y+
+ 154:	a6 01       	movw	r20, r12
+ 156:	0a 2c       	mov	r0, r10
+ 158:	02 c0       	rjmp	.+4      	; 0x15e <sev_segm_out+0x34>
+ 15a:	44 0f       	add	r20, r20
+ 15c:	55 1f       	adc	r21, r21
+ 15e:	0a 94       	dec	r0
+ 160:	e2 f7       	brpl	.-8      	; 0x15a <sev_segm_out+0x30>
+ 162:	40 23       	and	r20, r16
+ 164:	51 23       	and	r21, r17
+ 166:	0a 2c       	mov	r0, r10
+ 168:	02 c0       	rjmp	.+4      	; 0x16e <sev_segm_out+0x44>
+ 16a:	55 95       	asr	r21
+ 16c:	47 95       	ror	r20
+ 16e:	0a 94       	dec	r0
+ 170:	e2 f7       	brpl	.-8      	; 0x16a <sev_segm_out+0x40>
+ 172:	f7 01       	movw	r30, r14
+ 174:	80 81       	ld	r24, Z
+ 176:	0e 94 5b 00 	call	0xb6	; 0xb6 <dio_write_pin>
+		dio_set_pin_dir(obj->port,obj->pins[i],OUTPUT);
+	}
+}
+void sev_segm_out(config_7segm * obj , u8 num)
+{
+	for (int i=0;i<4;i++)
+ 17a:	ff ef       	ldi	r31, 0xFF	; 255
+ 17c:	af 1a       	sub	r10, r31
+ 17e:	bf 0a       	sbc	r11, r31
+ 180:	84 e0       	ldi	r24, 0x04	; 4
+ 182:	a8 16       	cp	r10, r24
+ 184:	b1 04       	cpc	r11, r1
+ 186:	29 f7       	brne	.-54     	; 0x152 <sev_segm_out+0x28>
+	{
+		dio_write_pin(obj->port,obj->pins[i],((1<<i) & num)>>i); // 0111 // 1 //  
+	}
+ 188:	df 91       	pop	r29
+ 18a:	cf 91       	pop	r28
+ 18c:	1f 91       	pop	r17
+ 18e:	0f 91       	pop	r16
+ 190:	ff 90       	pop	r15
+ 192:	ef 90       	pop	r14
+ 194:	df 90       	pop	r13
+ 196:	cf 90       	pop	r12
+ 198:	bf 90       	pop	r11
+ 19a:	af 90       	pop	r10
+ 19c:	08 95       	ret
+
+0000019e <main>:
+#include "ecu_7segm.h"
+#include <util/delay.h> 
+config_7segm obj;
+int main(void)
+{
+	obj.pins[0]=0;
+ 19e:	e0 e6       	ldi	r30, 0x60	; 96
+ 1a0:	f0 e0       	ldi	r31, 0x00	; 0
+ 1a2:	11 82       	std	Z+1, r1	; 0x01
+	obj.pins[1]=1;
+ 1a4:	81 e0       	ldi	r24, 0x01	; 1
+ 1a6:	82 83       	std	Z+2, r24	; 0x02
+	obj.pins[2]=2;
+ 1a8:	82 e0       	ldi	r24, 0x02	; 2
+ 1aa:	83 83       	std	Z+3, r24	; 0x03
+	obj.pins[3]=3;
+ 1ac:	83 e0       	ldi	r24, 0x03	; 3
+ 1ae:	84 83       	std	Z+4, r24	; 0x04
+	obj.port=PORTB;
+ 1b0:	88 e3       	ldi	r24, 0x38	; 56
+ 1b2:	80 83       	st	Z, r24
+	
+   sev_segm_init(&obj);
+ 1b4:	cf 01       	movw	r24, r30
+ 1b6:	0e 94 78 00 	call	0xf0	; 0xf0 <sev_segm_init>
+ 1ba:	c0 e0       	ldi	r28, 0x00	; 0
+   for (int i=0;i<=9;i++)
+   {
+	   sev_segm_out(&obj,i);
+ 1bc:	6c 2f       	mov	r22, r28
+ 1be:	80 e6       	ldi	r24, 0x60	; 96
+ 1c0:	90 e0       	ldi	r25, 0x00	; 0
+ 1c2:	0e 94 95 00 	call	0x12a	; 0x12a <sev_segm_out>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 1c6:	2f ef       	ldi	r18, 0xFF	; 255
+ 1c8:	84 e3       	ldi	r24, 0x34	; 52
+ 1ca:	9c e0       	ldi	r25, 0x0C	; 12
+ 1cc:	21 50       	subi	r18, 0x01	; 1
+ 1ce:	80 40       	sbci	r24, 0x00	; 0
+ 1d0:	90 40       	sbci	r25, 0x00	; 0
+ 1d2:	e1 f7       	brne	.-8      	; 0x1cc <main+0x2e>
+ 1d4:	00 c0       	rjmp	.+0      	; 0x1d6 <main+0x38>
+ 1d6:	00 00       	nop
+ 1d8:	cf 5f       	subi	r28, 0xFF	; 255
+	obj.pins[2]=2;
+	obj.pins[3]=3;
+	obj.port=PORTB;
+	
+   sev_segm_init(&obj);
+   for (int i=0;i<=9;i++)
+ 1da:	ca 30       	cpi	r28, 0x0A	; 10
+ 1dc:	79 f7       	brne	.-34     	; 0x1bc <main+0x1e>
+ 1de:	ff cf       	rjmp	.-2      	; 0x1de <main+0x40>
+
+000001e0 <_exit>:
+ 1e0:	f8 94       	cli
+
+000001e2 <__stop_program>:
+ 1e2:	ff cf       	rjmp	.-2      	; 0x1e2 <__stop_program>
