@@ -27,9 +27,8 @@ typedef enum
 
 void uart_init(u32 baud_rate,parity_sel parity,stop_bits_sel stop_bits);
 void uart_write_byte(char write_byte);
-u8 uart_read_byte();
+char uart_read_byte();
 void uart_write_text(char * write_text);
-u8 uart_read_text(char * read_text , char stop_char);
 
 
 

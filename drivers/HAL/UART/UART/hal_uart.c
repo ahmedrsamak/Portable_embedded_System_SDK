@@ -20,9 +20,22 @@ void uart_init(u32 baud_rate,parity_sel parity,stop_bits_sel stop_bits)
 	  (*(volatile port_base*)(UBRRL)) = (u8)(( (F_CPU / (8L * baud_rate) ))); // set baud_rate
 	  (*(volatile port_base*)(UBRRH)) = (u8)((( (F_CPU / (8L * baud_rate))))>>8); // set baud_rate
 }
+
 void uart_write_byte(char write_byte)
 {
 while(!((*(volatile port_base*)(UCSRA)) & (1<<5)));// handle it with interrupt to prevent delay
 (*(volatile port_base*)(UDR)) = write_byte;
+}
 
+char uart_read_byte()
+{
+	while (! ((*(volatile port_base*)(UCSRA)) & (1 << 7)));
+	return (*(volatile port_base*)(UDR));
+}
+void uart_write_text(char * write_text)
+{
+	 while(*write_text>0)
+	 {
+		 uart_write_byte(*write_text++);
+	 }
 }

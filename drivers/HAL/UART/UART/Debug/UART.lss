@@ -3,55 +3,55 @@ UART.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .text         0000014e  00000000  00000000  00000054  2**1
+  0 .text         0000017e  00000000  00000000  00000074  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  1 .data         00000000  00800060  00800060  000001a2  2**0
+  1 .data         00000006  00800060  0000017e  000001f2  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  2 .comment      00000030  00000000  00000000  000001a2  2**0
+  2 .comment      00000030  00000000  00000000  000001f8  2**0
                   CONTENTS, READONLY
-  3 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  000001d4  2**2
+  3 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000228  2**2
                   CONTENTS, READONLY
-  4 .debug_aranges 00000048  00000000  00000000  00000210  2**0
+  4 .debug_aranges 00000058  00000000  00000000  00000264  2**0
                   CONTENTS, READONLY, DEBUGGING
-  5 .debug_info   000007c4  00000000  00000000  00000258  2**0
+  5 .debug_info   00000826  00000000  00000000  000002bc  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_abbrev 000005d9  00000000  00000000  00000a1c  2**0
+  6 .debug_abbrev 0000061f  00000000  00000000  00000ae2  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_line   00000237  00000000  00000000  00000ff5  2**0
+  7 .debug_line   0000027d  00000000  00000000  00001101  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_frame  00000058  00000000  00000000  0000122c  2**2
+  8 .debug_frame  00000084  00000000  00000000  00001380  2**2
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_str    000003dc  00000000  00000000  00001284  2**0
+  9 .debug_str    00000405  00000000  00000000  00001404  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_loc    0000006e  00000000  00000000  00001660  2**0
+ 10 .debug_loc    000000d2  00000000  00000000  00001809  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_ranges 00000028  00000000  00000000  000016ce  2**0
+ 11 .debug_ranges 00000038  00000000  00000000  000018db  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
 
 00000000 <__vectors>:
    0:	0c 94 2a 00 	jmp	0x54	; 0x54 <__ctors_end>
-   4:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
-   8:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
-   c:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
-  10:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
-  14:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
-  18:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
-  1c:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
-  20:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
-  24:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
-  28:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
-  2c:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
-  30:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
-  34:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
-  38:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
-  3c:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
-  40:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
-  44:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
-  48:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
-  4c:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
-  50:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+   4:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
+   8:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
+   c:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
+  10:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
+  14:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
+  18:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
+  1c:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
+  20:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
+  24:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
+  28:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
+  2c:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
+  30:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
+  34:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
+  38:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
+  3c:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
+  40:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
+  44:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
+  48:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
+  4c:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
+  50:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
 
 00000054 <__ctors_end>:
   54:	11 24       	eor	r1, r1
@@ -60,164 +60,188 @@ Disassembly of section .text:
   5a:	d8 e0       	ldi	r29, 0x08	; 8
   5c:	de bf       	out	0x3e, r29	; 62
   5e:	cd bf       	out	0x3d, r28	; 61
-  60:	0e 94 74 00 	call	0xe8	; 0xe8 <main>
-  64:	0c 94 a5 00 	jmp	0x14a	; 0x14a <_exit>
 
-00000068 <__bad_interrupt>:
-  68:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+00000060 <__do_copy_data>:
+  60:	10 e0       	ldi	r17, 0x00	; 0
+  62:	a0 e6       	ldi	r26, 0x60	; 96
+  64:	b0 e0       	ldi	r27, 0x00	; 0
+  66:	ee e7       	ldi	r30, 0x7E	; 126
+  68:	f1 e0       	ldi	r31, 0x01	; 1
+  6a:	02 c0       	rjmp	.+4      	; 0x70 <__do_copy_data+0x10>
+  6c:	05 90       	lpm	r0, Z+
+  6e:	0d 92       	st	X+, r0
+  70:	a6 36       	cpi	r26, 0x66	; 102
+  72:	b1 07       	cpc	r27, r17
+  74:	d9 f7       	brne	.-10     	; 0x6c <__do_copy_data+0xc>
+  76:	0e 94 8e 00 	call	0x11c	; 0x11c <main>
+  7a:	0c 94 bd 00 	jmp	0x17a	; 0x17a <_exit>
 
-0000006c <uart_init>:
- (*(volatile port_base*)(port-1))
- */ 
-#include "hal_uart.h"
-void uart_init(u32 baud_rate,parity_sel parity,stop_bits_sel stop_bits)
+0000007e <__bad_interrupt>:
+  7e:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000082 <uart_init>:
+
+char uart_read_byte()
 {
-	 (*(volatile port_base*)(UCSRB)) = (1 << 4) | (1 << 3); // Enable RX and TX pins
-  6c:	38 e1       	ldi	r19, 0x18	; 24
-  6e:	3a b9       	out	0x0a, r19	; 10
-	 (*(volatile port_base*)(UCSRC)) |= (3<<1); // 8 bits mode
-  70:	30 b5       	in	r19, 0x20	; 32
-  72:	36 60       	ori	r19, 0x06	; 6
-  74:	30 bd       	out	0x20, r19	; 32
-	 (*(volatile port_base*)(UCSRA)) |=(1<<1); // double speed active
-  76:	59 9a       	sbi	0x0b, 1	; 11
-	 (*(volatile port_base*)(UCSRC)) |=(1<<7); // select reg UCSRC
-  78:	30 b5       	in	r19, 0x20	; 32
-  7a:	30 68       	ori	r19, 0x80	; 128
-  7c:	30 bd       	out	0x20, r19	; 32
-	 (*(volatile port_base*)(UCSRC)) |=(parity<<4); // select parity
-  7e:	30 b5       	in	r19, 0x20	; 32
-  80:	e0 e1       	ldi	r30, 0x10	; 16
-  82:	4e 9f       	mul	r20, r30
-  84:	a0 01       	movw	r20, r0
-  86:	11 24       	eor	r1, r1
-  88:	43 2b       	or	r20, r19
-  8a:	40 bd       	out	0x20, r20	; 32
-	 (*(volatile port_base*)(UCSRC)) |=(stop_bits<<3); // select stop_bits
-  8c:	30 b5       	in	r19, 0x20	; 32
-  8e:	22 0f       	add	r18, r18
-  90:	22 0f       	add	r18, r18
-  92:	22 0f       	add	r18, r18
-  94:	23 2b       	or	r18, r19
-  96:	20 bd       	out	0x20, r18	; 32
-	  (*(volatile port_base*)(UCSRC)) |=(1<<7); // select reg UCSRC
-  98:	20 b5       	in	r18, 0x20	; 32
-  9a:	20 68       	ori	r18, 0x80	; 128
-  9c:	20 bd       	out	0x20, r18	; 32
-	  (*(volatile port_base*)(UCSRC)) &=~(1<<6);
-  9e:	20 b5       	in	r18, 0x20	; 32
-  a0:	2f 7b       	andi	r18, 0xBF	; 191
-  a2:	20 bd       	out	0x20, r18	; 32
-	  (*(volatile port_base*)(UBRRL)) &=~(1<<7);
-  a4:	4f 98       	cbi	0x09, 7	; 9
-	  (*(volatile port_base*)(UBRRL)) = (u8)(( (F_CPU / (8L * baud_rate) ))); // set baud_rate
-  a6:	dc 01       	movw	r26, r24
-  a8:	cb 01       	movw	r24, r22
-  aa:	88 0f       	add	r24, r24
-  ac:	99 1f       	adc	r25, r25
-  ae:	aa 1f       	adc	r26, r26
-  b0:	bb 1f       	adc	r27, r27
-  b2:	88 0f       	add	r24, r24
-  b4:	99 1f       	adc	r25, r25
-  b6:	aa 1f       	adc	r26, r26
-  b8:	bb 1f       	adc	r27, r27
-  ba:	9c 01       	movw	r18, r24
-  bc:	ad 01       	movw	r20, r26
-  be:	22 0f       	add	r18, r18
-  c0:	33 1f       	adc	r19, r19
-  c2:	44 1f       	adc	r20, r20
-  c4:	55 1f       	adc	r21, r21
-  c6:	60 e0       	ldi	r22, 0x00	; 0
-  c8:	72 e1       	ldi	r23, 0x12	; 18
-  ca:	8a e7       	ldi	r24, 0x7A	; 122
-  cc:	90 e0       	ldi	r25, 0x00	; 0
-  ce:	0e 94 83 00 	call	0x106	; 0x106 <__udivmodsi4>
-  d2:	29 b9       	out	0x09, r18	; 9
-	  (*(volatile port_base*)(UBRRH)) = (u8)((( (F_CPU / (8L * baud_rate))))>>8); // set baud_rate
-  d4:	bb 27       	eor	r27, r27
-  d6:	a5 2f       	mov	r26, r21
-  d8:	94 2f       	mov	r25, r20
-  da:	83 2f       	mov	r24, r19
-  dc:	80 bd       	out	0x20, r24	; 32
-  de:	08 95       	ret
-
-000000e0 <uart_write_byte>:
+	while (! ((*(volatile port_base*)(UCSRA)) & (1 << 7)));
+	return (*(volatile port_base*)(UDR));
 }
-void uart_write_byte(char write_byte)
-{
-while(!((*(volatile port_base*)(UCSRA)) & (1<<5)));// handle it with interrupt to prevent delay
-  e0:	5d 9b       	sbis	0x0b, 5	; 11
-  e2:	fe cf       	rjmp	.-4      	; 0xe0 <uart_write_byte>
-(*(volatile port_base*)(UDR)) = write_byte;
-  e4:	8c b9       	out	0x0c, r24	; 12
-  e6:	08 95       	ret
+  82:	38 e1       	ldi	r19, 0x18	; 24
+  84:	3a b9       	out	0x0a, r19	; 10
+  86:	30 b5       	in	r19, 0x20	; 32
+  88:	36 60       	ori	r19, 0x06	; 6
+  8a:	30 bd       	out	0x20, r19	; 32
+  8c:	59 9a       	sbi	0x0b, 1	; 11
+  8e:	30 b5       	in	r19, 0x20	; 32
+  90:	30 68       	ori	r19, 0x80	; 128
+  92:	30 bd       	out	0x20, r19	; 32
+  94:	30 b5       	in	r19, 0x20	; 32
+  96:	e0 e1       	ldi	r30, 0x10	; 16
+  98:	4e 9f       	mul	r20, r30
+  9a:	a0 01       	movw	r20, r0
+  9c:	11 24       	eor	r1, r1
+  9e:	43 2b       	or	r20, r19
+  a0:	40 bd       	out	0x20, r20	; 32
+  a2:	30 b5       	in	r19, 0x20	; 32
+  a4:	22 0f       	add	r18, r18
+  a6:	22 0f       	add	r18, r18
+  a8:	22 0f       	add	r18, r18
+  aa:	23 2b       	or	r18, r19
+  ac:	20 bd       	out	0x20, r18	; 32
+  ae:	20 b5       	in	r18, 0x20	; 32
+  b0:	20 68       	ori	r18, 0x80	; 128
+  b2:	20 bd       	out	0x20, r18	; 32
+  b4:	20 b5       	in	r18, 0x20	; 32
+  b6:	2f 7b       	andi	r18, 0xBF	; 191
+  b8:	20 bd       	out	0x20, r18	; 32
+  ba:	4f 98       	cbi	0x09, 7	; 9
+  bc:	dc 01       	movw	r26, r24
+  be:	cb 01       	movw	r24, r22
+  c0:	88 0f       	add	r24, r24
+  c2:	99 1f       	adc	r25, r25
+  c4:	aa 1f       	adc	r26, r26
+  c6:	bb 1f       	adc	r27, r27
+  c8:	88 0f       	add	r24, r24
+  ca:	99 1f       	adc	r25, r25
+  cc:	aa 1f       	adc	r26, r26
+  ce:	bb 1f       	adc	r27, r27
+  d0:	9c 01       	movw	r18, r24
+  d2:	ad 01       	movw	r20, r26
+  d4:	22 0f       	add	r18, r18
+  d6:	33 1f       	adc	r19, r19
+  d8:	44 1f       	adc	r20, r20
+  da:	55 1f       	adc	r21, r21
+  dc:	60 e0       	ldi	r22, 0x00	; 0
+  de:	72 e1       	ldi	r23, 0x12	; 18
+  e0:	8a e7       	ldi	r24, 0x7A	; 122
+  e2:	90 e0       	ldi	r25, 0x00	; 0
+  e4:	0e 94 9b 00 	call	0x136	; 0x136 <__udivmodsi4>
+  e8:	29 b9       	out	0x09, r18	; 9
+  ea:	bb 27       	eor	r27, r27
+  ec:	a5 2f       	mov	r26, r21
+  ee:	94 2f       	mov	r25, r20
+  f0:	83 2f       	mov	r24, r19
+  f2:	80 bd       	out	0x20, r24	; 32
+  f4:	08 95       	ret
 
-000000e8 <main>:
- * Author : ahmed
+000000f6 <uart_write_byte>:
+  f6:	5d 9b       	sbis	0x0b, 5	; 11
+  f8:	fe cf       	rjmp	.-4      	; 0xf6 <uart_write_byte>
+  fa:	8c b9       	out	0x0c, r24	; 12
+  fc:	08 95       	ret
+
+000000fe <uart_write_text>:
+void uart_write_text(char * write_text)
+{
+  fe:	cf 93       	push	r28
+ 100:	df 93       	push	r29
+ 102:	ec 01       	movw	r28, r24
+	 while(*write_text>0)
+ 104:	88 81       	ld	r24, Y
+ 106:	88 23       	and	r24, r24
+ 108:	31 f0       	breq	.+12     	; 0x116 <uart_write_text+0x18>
+ 10a:	21 96       	adiw	r28, 0x01	; 1
+	 {
+		 uart_write_byte(*write_text++);
+ 10c:	0e 94 7b 00 	call	0xf6	; 0xf6 <uart_write_byte>
+	while (! ((*(volatile port_base*)(UCSRA)) & (1 << 7)));
+	return (*(volatile port_base*)(UDR));
+}
+void uart_write_text(char * write_text)
+{
+	 while(*write_text>0)
+ 110:	89 91       	ld	r24, Y+
+ 112:	81 11       	cpse	r24, r1
+ 114:	fb cf       	rjmp	.-10     	; 0x10c <uart_write_text+0xe>
+	 {
+		 uart_write_byte(*write_text++);
+	 }
+ 116:	df 91       	pop	r29
+ 118:	cf 91       	pop	r28
+ 11a:	08 95       	ret
+
+0000011c <main>:
  */ 
 #include "hal_uart.h"
+#include <util/delay.h>
 int main(void)
 {
     uart_init(115200,NONE,ONE_BIT);
-  e8:	20 e0       	ldi	r18, 0x00	; 0
-  ea:	40 e0       	ldi	r20, 0x00	; 0
-  ec:	60 e0       	ldi	r22, 0x00	; 0
-  ee:	72 ec       	ldi	r23, 0xC2	; 194
-  f0:	81 e0       	ldi	r24, 0x01	; 1
-  f2:	90 e0       	ldi	r25, 0x00	; 0
-  f4:	0e 94 36 00 	call	0x6c	; 0x6c <uart_init>
-	uart_write_byte('a');
-  f8:	81 e6       	ldi	r24, 0x61	; 97
-  fa:	0e 94 70 00 	call	0xe0	; 0xe0 <uart_write_byte>
-    while (1) 
-    {
-		uart_write_byte('a');
-  fe:	81 e6       	ldi	r24, 0x61	; 97
- 100:	0e 94 70 00 	call	0xe0	; 0xe0 <uart_write_byte>
- 104:	fc cf       	rjmp	.-8      	; 0xfe <main+0x16>
+ 11c:	20 e0       	ldi	r18, 0x00	; 0
+ 11e:	40 e0       	ldi	r20, 0x00	; 0
+ 120:	60 e0       	ldi	r22, 0x00	; 0
+ 122:	72 ec       	ldi	r23, 0xC2	; 194
+ 124:	81 e0       	ldi	r24, 0x01	; 1
+ 126:	90 e0       	ldi	r25, 0x00	; 0
+ 128:	0e 94 41 00 	call	0x82	; 0x82 <uart_init>
+	uart_write_text("Start");
+ 12c:	80 e6       	ldi	r24, 0x60	; 96
+ 12e:	90 e0       	ldi	r25, 0x00	; 0
+ 130:	0e 94 7f 00 	call	0xfe	; 0xfe <uart_write_text>
+ 134:	ff cf       	rjmp	.-2      	; 0x134 <main+0x18>
 
-00000106 <__udivmodsi4>:
- 106:	a1 e2       	ldi	r26, 0x21	; 33
- 108:	1a 2e       	mov	r1, r26
- 10a:	aa 1b       	sub	r26, r26
- 10c:	bb 1b       	sub	r27, r27
- 10e:	fd 01       	movw	r30, r26
- 110:	0d c0       	rjmp	.+26     	; 0x12c <__udivmodsi4_ep>
+00000136 <__udivmodsi4>:
+ 136:	a1 e2       	ldi	r26, 0x21	; 33
+ 138:	1a 2e       	mov	r1, r26
+ 13a:	aa 1b       	sub	r26, r26
+ 13c:	bb 1b       	sub	r27, r27
+ 13e:	fd 01       	movw	r30, r26
+ 140:	0d c0       	rjmp	.+26     	; 0x15c <__udivmodsi4_ep>
 
-00000112 <__udivmodsi4_loop>:
- 112:	aa 1f       	adc	r26, r26
- 114:	bb 1f       	adc	r27, r27
- 116:	ee 1f       	adc	r30, r30
- 118:	ff 1f       	adc	r31, r31
- 11a:	a2 17       	cp	r26, r18
- 11c:	b3 07       	cpc	r27, r19
- 11e:	e4 07       	cpc	r30, r20
- 120:	f5 07       	cpc	r31, r21
- 122:	20 f0       	brcs	.+8      	; 0x12c <__udivmodsi4_ep>
- 124:	a2 1b       	sub	r26, r18
- 126:	b3 0b       	sbc	r27, r19
- 128:	e4 0b       	sbc	r30, r20
- 12a:	f5 0b       	sbc	r31, r21
+00000142 <__udivmodsi4_loop>:
+ 142:	aa 1f       	adc	r26, r26
+ 144:	bb 1f       	adc	r27, r27
+ 146:	ee 1f       	adc	r30, r30
+ 148:	ff 1f       	adc	r31, r31
+ 14a:	a2 17       	cp	r26, r18
+ 14c:	b3 07       	cpc	r27, r19
+ 14e:	e4 07       	cpc	r30, r20
+ 150:	f5 07       	cpc	r31, r21
+ 152:	20 f0       	brcs	.+8      	; 0x15c <__udivmodsi4_ep>
+ 154:	a2 1b       	sub	r26, r18
+ 156:	b3 0b       	sbc	r27, r19
+ 158:	e4 0b       	sbc	r30, r20
+ 15a:	f5 0b       	sbc	r31, r21
 
-0000012c <__udivmodsi4_ep>:
- 12c:	66 1f       	adc	r22, r22
- 12e:	77 1f       	adc	r23, r23
- 130:	88 1f       	adc	r24, r24
- 132:	99 1f       	adc	r25, r25
- 134:	1a 94       	dec	r1
- 136:	69 f7       	brne	.-38     	; 0x112 <__udivmodsi4_loop>
- 138:	60 95       	com	r22
- 13a:	70 95       	com	r23
- 13c:	80 95       	com	r24
- 13e:	90 95       	com	r25
- 140:	9b 01       	movw	r18, r22
- 142:	ac 01       	movw	r20, r24
- 144:	bd 01       	movw	r22, r26
- 146:	cf 01       	movw	r24, r30
- 148:	08 95       	ret
+0000015c <__udivmodsi4_ep>:
+ 15c:	66 1f       	adc	r22, r22
+ 15e:	77 1f       	adc	r23, r23
+ 160:	88 1f       	adc	r24, r24
+ 162:	99 1f       	adc	r25, r25
+ 164:	1a 94       	dec	r1
+ 166:	69 f7       	brne	.-38     	; 0x142 <__udivmodsi4_loop>
+ 168:	60 95       	com	r22
+ 16a:	70 95       	com	r23
+ 16c:	80 95       	com	r24
+ 16e:	90 95       	com	r25
+ 170:	9b 01       	movw	r18, r22
+ 172:	ac 01       	movw	r20, r24
+ 174:	bd 01       	movw	r22, r26
+ 176:	cf 01       	movw	r24, r30
+ 178:	08 95       	ret
 
-0000014a <_exit>:
- 14a:	f8 94       	cli
+0000017a <_exit>:
+ 17a:	f8 94       	cli
 
-0000014c <__stop_program>:
- 14c:	ff cf       	rjmp	.-2      	; 0x14c <__stop_program>
+0000017c <__stop_program>:
+ 17c:	ff cf       	rjmp	.-2      	; 0x17c <__stop_program>
