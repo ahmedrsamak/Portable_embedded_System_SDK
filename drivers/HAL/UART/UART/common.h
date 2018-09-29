@@ -15,7 +15,7 @@
 #define TRUE 1
 #define  FALSE 0
 #define NULL ((void *)0)
-#define F_CPU 8000000
+
 
 typedef unsigned char u8;
 typedef unsigned short int u16;
