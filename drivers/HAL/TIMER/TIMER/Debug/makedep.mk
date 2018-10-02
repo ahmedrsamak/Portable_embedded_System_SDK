@@ -4,7 +4,5 @@
 
 hal_timer0.c
 
-hal_uart.c
-
 main.c
 

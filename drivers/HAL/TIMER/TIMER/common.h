@@ -9,10 +9,12 @@
 #ifndef COMMON_H_
 #define COMMON_H_
 #define F_CPU 8000000
+#include <avr/io.h>
+
 //#define SetBit(reg,pin) reg|=(1<<pin)
 //#define ClrBit(reg,pin) reg&=~(1<<pin)
 //#define ToggleBit(reg,pin) reg^=(1<<pin)
-#define reg(regis) (*(volatile port_base*)(regis))
+
 #define TRUE 1		
 #define FALSE 0
 #define NULL ((void *)0)

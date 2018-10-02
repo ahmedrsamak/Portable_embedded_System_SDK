@@ -3,29 +3,31 @@ TIMER.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .text         000000b6  00000000  00000000  00000054  2**1
+  0 .text         0000016a  00000000  00000000  00000074  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  1 .data         00000000  00800060  00800060  0000010a  2**0
+  1 .data         00000000  00800060  00800060  000001de  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  2 .comment      00000030  00000000  00000000  0000010a  2**0
+  2 .bss          00000004  00800060  00800060  000001de  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  000001de  2**0
                   CONTENTS, READONLY
-  3 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  0000013c  2**2
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000210  2**2
                   CONTENTS, READONLY
-  4 .debug_aranges 00000048  00000000  00000000  00000178  2**0
+  5 .debug_aranges 00000078  00000000  00000000  0000024c  2**0
                   CONTENTS, READONLY, DEBUGGING
-  5 .debug_info   0000085d  00000000  00000000  000001c0  2**0
+  6 .debug_info   00000813  00000000  00000000  000002c4  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_abbrev 00000609  00000000  00000000  00000a1d  2**0
+  7 .debug_abbrev 0000067a  00000000  00000000  00000ad7  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_line   00000271  00000000  00000000  00001026  2**0
+  8 .debug_line   0000037b  00000000  00000000  00001151  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_frame  00000058  00000000  00000000  00001298  2**2
+  9 .debug_frame  00000148  00000000  00000000  000014cc  2**2
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_str    00000439  00000000  00000000  000012f0  2**0
+ 10 .debug_str    000003f0  00000000  00000000  00001614  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_loc    00000021  00000000  00000000  00001729  2**0
+ 11 .debug_loc    000001b7  00000000  00000000  00001a04  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_ranges 00000028  00000000  00000000  0000174a  2**0
+ 12 .debug_ranges 00000058  00000000  00000000  00001bbb  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -41,8 +43,8 @@ Disassembly of section .text:
   1c:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
   20:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
   24:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
-  28:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
-  2c:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  28:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__vector_10>
+  2c:	0c 94 65 00 	jmp	0xca	; 0xca <__vector_11>
   30:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
   34:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
   38:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
@@ -71,63 +73,163 @@ Disassembly of section .text:
   68:	1d 92       	st	X+, r1
 
 0000006a <.do_clear_bss_start>:
-  6a:	a0 36       	cpi	r26, 0x60	; 96
+  6a:	a4 36       	cpi	r26, 0x64	; 100
   6c:	b2 07       	cpc	r27, r18
   6e:	e1 f7       	brne	.-8      	; 0x68 <.do_clear_bss_loop>
-  70:	0e 94 54 00 	call	0xa8	; 0xa8 <main>
-  74:	0c 94 59 00 	jmp	0xb2	; 0xb2 <_exit>
+  70:	0e 94 a3 00 	call	0x146	; 0x146 <main>
+  74:	0c 94 b3 00 	jmp	0x166	; 0x166 <_exit>
 
 00000078 <__bad_interrupt>:
   78:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
 
-0000007c <timer0_start>:
+0000007c <__vector_10>:
+void timer0_stop()
 {
-	cb();
-}*/
-void timer0_start(PRESCALER_SELC prescaller,u8 comp_value)
-{
-	reg(TCCR0)|= 0x08;
-  7c:	e3 b7       	in	r30, 0x33	; 51
-  7e:	f0 e0       	ldi	r31, 0x00	; 0
-  80:	80 81       	ld	r24, Z
-  82:	88 60       	ori	r24, 0x08	; 8
-  84:	80 83       	st	Z, r24
-	reg(TIMSK)|= 0x03;
-  86:	e9 b7       	in	r30, 0x39	; 57
-  88:	f0 e0       	ldi	r31, 0x00	; 0
-  8a:	80 81       	ld	r24, Z
-  8c:	83 60       	ori	r24, 0x03	; 3
-  8e:	80 83       	st	Z, r24
-	reg(OCR0)  = 32;
-  90:	ec b7       	in	r30, 0x3c	; 60
-  92:	f0 e0       	ldi	r31, 0x00	; 0
-  94:	80 e2       	ldi	r24, 0x20	; 32
-  96:	80 83       	st	Z, r24
-	reg(TCNT0) = 0;
-  98:	e2 b7       	in	r30, 0x32	; 50
-  9a:	f0 e0       	ldi	r31, 0x00	; 0
-  9c:	10 82       	st	Z, r1
-	reg(TCCR0)|= 0;
-  9e:	e3 b7       	in	r30, 0x33	; 51
-  a0:	f0 e0       	ldi	r31, 0x00	; 0
-  a2:	80 81       	ld	r24, Z
-  a4:	80 83       	st	Z, r24
-  a6:	08 95       	ret
+	TCCR0 = 0x00;
+	TIMSK = 0x00;
+	OCR0  = 0x00;
+	TCNT0 = 0x00;
+  7c:	1f 92       	push	r1
+  7e:	0f 92       	push	r0
+  80:	0f b6       	in	r0, 0x3f	; 63
+  82:	0f 92       	push	r0
+  84:	11 24       	eor	r1, r1
+  86:	2f 93       	push	r18
+  88:	3f 93       	push	r19
+  8a:	4f 93       	push	r20
+  8c:	5f 93       	push	r21
+  8e:	6f 93       	push	r22
+  90:	7f 93       	push	r23
+  92:	8f 93       	push	r24
+  94:	9f 93       	push	r25
+  96:	af 93       	push	r26
+  98:	bf 93       	push	r27
+  9a:	ef 93       	push	r30
+  9c:	ff 93       	push	r31
+  9e:	e0 91 60 00 	lds	r30, 0x0060	; 0x800060 <_edata>
+  a2:	f0 91 61 00 	lds	r31, 0x0061	; 0x800061 <_edata+0x1>
+  a6:	09 95       	icall
+  a8:	ff 91       	pop	r31
+  aa:	ef 91       	pop	r30
+  ac:	bf 91       	pop	r27
+  ae:	af 91       	pop	r26
+  b0:	9f 91       	pop	r25
+  b2:	8f 91       	pop	r24
+  b4:	7f 91       	pop	r23
+  b6:	6f 91       	pop	r22
+  b8:	5f 91       	pop	r21
+  ba:	4f 91       	pop	r20
+  bc:	3f 91       	pop	r19
+  be:	2f 91       	pop	r18
+  c0:	0f 90       	pop	r0
+  c2:	0f be       	out	0x3f, r0	; 63
+  c4:	0f 90       	pop	r0
+  c6:	1f 90       	pop	r1
+  c8:	18 95       	reti
 
-000000a8 <main>:
-	reg(DDRD)=0xff;//~reg(DDRD);
+000000ca <__vector_11>:
+  ca:	1f 92       	push	r1
+  cc:	0f 92       	push	r0
+  ce:	0f b6       	in	r0, 0x3f	; 63
+  d0:	0f 92       	push	r0
+  d2:	11 24       	eor	r1, r1
+  d4:	2f 93       	push	r18
+  d6:	3f 93       	push	r19
+  d8:	4f 93       	push	r20
+  da:	5f 93       	push	r21
+  dc:	6f 93       	push	r22
+  de:	7f 93       	push	r23
+  e0:	8f 93       	push	r24
+  e2:	9f 93       	push	r25
+  e4:	af 93       	push	r26
+  e6:	bf 93       	push	r27
+  e8:	ef 93       	push	r30
+  ea:	ff 93       	push	r31
+  ec:	e0 91 60 00 	lds	r30, 0x0060	; 0x800060 <_edata>
+  f0:	f0 91 61 00 	lds	r31, 0x0061	; 0x800061 <_edata+0x1>
+  f4:	09 95       	icall
+  f6:	ff 91       	pop	r31
+  f8:	ef 91       	pop	r30
+  fa:	bf 91       	pop	r27
+  fc:	af 91       	pop	r26
+  fe:	9f 91       	pop	r25
+ 100:	8f 91       	pop	r24
+ 102:	7f 91       	pop	r23
+ 104:	6f 91       	pop	r22
+ 106:	5f 91       	pop	r21
+ 108:	4f 91       	pop	r20
+ 10a:	3f 91       	pop	r19
+ 10c:	2f 91       	pop	r18
+ 10e:	0f 90       	pop	r0
+ 110:	0f be       	out	0x3f, r0	; 63
+ 112:	0f 90       	pop	r0
+ 114:	1f 90       	pop	r1
+ 116:	18 95       	reti
+
+00000118 <timer0_start>:
+ 118:	93 b7       	in	r25, 0x33	; 51
+ 11a:	98 60       	ori	r25, 0x08	; 8
+ 11c:	93 bf       	out	0x33, r25	; 51
+ 11e:	99 b7       	in	r25, 0x39	; 57
+ 120:	93 60       	ori	r25, 0x03	; 3
+ 122:	99 bf       	out	0x39, r25	; 57
+ 124:	6c bf       	out	0x3c, r22	; 60
+ 126:	12 be       	out	0x32, r1	; 50
+ 128:	78 94       	sei
+ 12a:	93 b7       	in	r25, 0x33	; 51
+ 12c:	89 2b       	or	r24, r25
+ 12e:	83 bf       	out	0x33, r24	; 51
+ 130:	08 95       	ret
+
+00000132 <timer0_read>:
+ 132:	82 b7       	in	r24, 0x32	; 50
+ 134:	08 95       	ret
+
+00000136 <timer0_call_back>:
+}
+
+
+void timer0_call_back(void (*ucb)(void))
+{
+	cb=ucb;
+ 136:	90 93 61 00 	sts	0x0061, r25	; 0x800061 <_edata+0x1>
+ 13a:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <_edata>
+ 13e:	08 95       	ret
+
+00000140 <test>:
+//#include "common.h"
+//#include <avr/interrupt.h>
+int x;
+void test()
+{
+	DDRD=0xff;//~reg(DDRD);
+ 140:	8f ef       	ldi	r24, 0xFF	; 255
+ 142:	81 bb       	out	0x11, r24	; 17
+ 144:	08 95       	ret
+
+00000146 <main>:
 }
 int main(void)
 {
-	
-   timer0_start(NO_PRESCALER,8);
-  a8:	68 e0       	ldi	r22, 0x08	; 8
-  aa:	81 e0       	ldi	r24, 0x01	; 1
-  ac:	0e 94 3e 00 	call	0x7c	; 0x7c <timer0_start>
-  b0:	ff cf       	rjmp	.-2      	; 0xb0 <main+0x8>
+    timer0_call_back(&test);
+ 146:	80 ea       	ldi	r24, 0xA0	; 160
+ 148:	90 e0       	ldi	r25, 0x00	; 0
+ 14a:	0e 94 9b 00 	call	0x136	; 0x136 <timer0_call_back>
+	timer0_start(NO_PRESCALER,32);
+ 14e:	60 e2       	ldi	r22, 0x20	; 32
+ 150:	81 e0       	ldi	r24, 0x01	; 1
+ 152:	0e 94 8c 00 	call	0x118	; 0x118 <timer0_start>
+    while (1) 
+    {
+	x =  timer0_read();
+ 156:	0e 94 99 00 	call	0x132	; 0x132 <timer0_read>
+ 15a:	90 e0       	ldi	r25, 0x00	; 0
+ 15c:	90 93 63 00 	sts	0x0063, r25	; 0x800063 <x+0x1>
+ 160:	80 93 62 00 	sts	0x0062, r24	; 0x800062 <x>
+ 164:	f8 cf       	rjmp	.-16     	; 0x156 <main+0x10>
 
-000000b2 <_exit>:
-  b2:	f8 94       	cli
+00000166 <_exit>:
+ 166:	f8 94       	cli
 
-000000b4 <__stop_program>:
-  b4:	ff cf       	rjmp	.-2      	; 0xb4 <__stop_program>
+00000168 <__stop_program>:
+ 168:	ff cf       	rjmp	.-2      	; 0x168 <__stop_program>
