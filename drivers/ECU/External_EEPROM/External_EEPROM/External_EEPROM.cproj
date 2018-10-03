@@ -157,9 +157,6 @@
     <Compile Include="main.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="reg_addr.h">
-      <SubType>compile</SubType>
-    </Compile>
     <Compile Include="TWI\hal_twi.c">
       <SubType>compile</SubType>
     </Compile>

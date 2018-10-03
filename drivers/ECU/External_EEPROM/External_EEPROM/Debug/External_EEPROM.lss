@@ -15,19 +15,19 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY
   5 .debug_aranges 00000130  00000000  00000000  00000774  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   000017de  00000000  00000000  000008a4  2**0
+  6 .debug_info   00001793  00000000  00000000  000008a4  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 00000b29  00000000  00000000  00002082  2**0
+  7 .debug_abbrev 00000b30  00000000  00000000  00002037  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   000009bd  00000000  00000000  00002bab  2**0
+  8 .debug_line   00000a14  00000000  00000000  00002b67  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  000002b4  00000000  00000000  00003568  2**2
+  9 .debug_frame  000002b4  00000000  00000000  0000357c  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    00000686  00000000  00000000  0000381c  2**0
+ 10 .debug_str    00000699  00000000  00000000  00003830  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    00000bcd  00000000  00000000  00003ea2  2**0
+ 11 .debug_loc    00000bcd  00000000  00000000  00003ec9  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 000000e0  00000000  00000000  00004a6f  2**0
+ 12 .debug_ranges 000000e0  00000000  00000000  00004a96  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -741,12 +741,12 @@ int x=0;
 config_lcd_pin LCD1;
 int main(void)
 {
-	LCD1.ctrl_port=PORTA;
+	LCD1.ctrl_port=porta;
  442:	e5 e7       	ldi	r30, 0x75	; 117
  444:	f0 e0       	ldi	r31, 0x00	; 0
  446:	8b e3       	ldi	r24, 0x3B	; 59
  448:	81 83       	std	Z+1, r24	; 0x01
-	LCD1.data_port=PORTB;
+	LCD1.data_port=portb;
  44a:	88 e3       	ldi	r24, 0x38	; 56
  44c:	80 83       	st	Z, r24
 	LCD1.RS_pin=7;
@@ -794,8 +794,8 @@ int main(void)
     ext_eeprom_init(100);
  494:	84 e6       	ldi	r24, 0x64	; 100
  496:	0e 94 49 00 	call	0x92	; 0x92 <ext_eeprom_init>
-	ext_eeprom_write(0,01,57);
- 49a:	49 e3       	ldi	r20, 0x39	; 57
+	ext_eeprom_write(0,01,55);
+ 49a:	47 e3       	ldi	r20, 0x37	; 55
  49c:	61 e0       	ldi	r22, 0x01	; 1
  49e:	70 e0       	ldi	r23, 0x00	; 0
  4a0:	80 e0       	ldi	r24, 0x00	; 0
@@ -837,11 +837,11 @@ int main(void)
  4ec:	ff cf       	rjmp	.-2      	; 0x4ec <main+0xaa>
 
 000004ee <TWI_Init>:
-    (*(volatile port_base*)(TWCR)) = (1 << 7) | (1 << 2) | (1<<6);
+    TWCR = (1 << 7) | (1 << 2) | (1<<6);
     // Wait for TWINT flag set in TWCR Register (data received successfully) 
-    while (!((*(volatile port_base*)(TWCR)) & (1 << 7)));
+    while (!(TWCR & (1 << 7)));
     // Read Data
-    return (*(volatile port_base*)(TWDR));
+    return TWDR;
 }
  4ee:	cf 93       	push	r28
  4f0:	c6 2f       	mov	r28, r22
@@ -894,20 +894,20 @@ int main(void)
 	 * Enable TWI Module TWEN=1 
 	 * disable sending ACK TWEA=0
 	 */
-    (*(volatile port_base*)(TWCR)) = (1 << 7) | (1 << 2);
+    TWCR = (1 << 7) | (1 << 2);
  53e:	84 e8       	ldi	r24, 0x84	; 132
  540:	86 bf       	out	0x36, r24	; 54
-	(*(volatile port_base*)(TWCR)) &=~(1<<6);
+	TWCR &=~(1<<6);
  542:	86 b7       	in	r24, 0x36	; 54
  544:	8f 7b       	andi	r24, 0xBF	; 191
  546:	86 bf       	out	0x36, r24	; 54
     // Wait for TWINT flag set in TWCR Register (data received successfully) 
-    while (!((*(volatile port_base*)(TWCR)) & (1 << 7)));
+    while (!(TWCR & (1 << 7)));
  548:	06 b6       	in	r0, 0x36	; 54
  54a:	07 fe       	sbrs	r0, 7
  54c:	fd cf       	rjmp	.-6      	; 0x548 <TWI_Read_With_NACK+0xa>
     // Read Data
-    return (*(volatile port_base*)(TWDR));
+    return TWDR;
  54e:	83 b1       	in	r24, 0x03	; 3
 }
  550:	08 95       	ret

@@ -5,6 +5,8 @@
  *  Author: ahmed
  */ 
 #include "hal_timer0.h"
+#include <avr/io.h>
+#include <avr/interrupt.h>
 static void (*cb)(void);
 
 

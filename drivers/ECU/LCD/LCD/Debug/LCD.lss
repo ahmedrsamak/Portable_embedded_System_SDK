@@ -15,19 +15,19 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY
   5 .debug_aranges 000000b0  00000000  00000000  00000610  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   000013e4  00000000  00000000  000006c0  2**0
+  6 .debug_info   00001400  00000000  00000000  000006c0  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 0000094a  00000000  00000000  00001aa4  2**0
+  7 .debug_abbrev 0000094a  00000000  00000000  00001ac0  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   0000072e  00000000  00000000  000023ee  2**0
+  8 .debug_line   00000728  00000000  00000000  0000240a  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  000001c4  00000000  00000000  00002b1c  2**2
+  9 .debug_frame  000001c4  00000000  00000000  00002b34  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    00000595  00000000  00000000  00002ce0  2**0
+ 10 .debug_str    00000595  00000000  00000000  00002cf8  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    00000977  00000000  00000000  00003275  2**0
+ 11 .debug_loc    00000977  00000000  00000000  0000328d  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 00000080  00000000  00000000  00003bec  2**0
+ 12 .debug_ranges 00000080  00000000  00000000  00003c04  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -676,10 +676,10 @@ int main(void)
  3d8:	97 83       	std	Z+7, r25	; 0x07
 	obj.RS_pin=7;
  3da:	86 83       	std	Z+6, r24	; 0x06
-	obj.ctrl_port=PORTA;
+	obj.ctrl_port=porta;
  3dc:	8b e3       	ldi	r24, 0x3B	; 59
  3de:	81 83       	std	Z+1, r24	; 0x01
-	obj.data_port=PORTB;
+	obj.data_port=portb;
  3e0:	88 e3       	ldi	r24, 0x38	; 56
  3e2:	80 83       	st	Z, r24
 	lcd_init(&obj);

@@ -9,10 +9,11 @@
 //#include "reg_addr.h"
 //#include "common.h"
 //#include <avr/interrupt.h>
+#include "hal_dio.o"
 int x;
 void test()
 {
-	DDRD=0xff;//~reg(DDRD);
+	
 }
 int main(void)
 {

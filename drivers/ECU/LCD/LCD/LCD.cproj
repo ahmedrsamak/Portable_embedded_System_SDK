@@ -142,9 +142,6 @@
     <Compile Include="dio\hal_dio.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="dio\reg_addr.h">
-      <SubType>compile</SubType>
-    </Compile>
     <Compile Include="ecu_lcd.c">
       <SubType>compile</SubType>
     </Compile>

@@ -15,19 +15,19 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY
   5 .debug_aranges 00000140  00000000  00000000  00000794  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   000019cf  00000000  00000000  000008d4  2**0
+  6 .debug_info   00001977  00000000  00000000  000008d4  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 00000b92  00000000  00000000  000022a3  2**0
+  7 .debug_abbrev 00000b85  00000000  00000000  0000224b  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   00000b2a  00000000  00000000  00002e35  2**0
+  8 .debug_line   00000b83  00000000  00000000  00002dd0  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  00000324  00000000  00000000  00003960  2**2
+  9 .debug_frame  00000324  00000000  00000000  00003954  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    0000067e  00000000  00000000  00003c84  2**0
+ 10 .debug_str    00000691  00000000  00000000  00003c78  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    00000e0b  00000000  00000000  00004302  2**0
+ 11 .debug_loc    00000e0b  00000000  00000000  00004309  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 000000f0  00000000  00000000  0000510d  2**0
+ 12 .debug_ranges 000000f0  00000000  00000000  00005114  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -643,12 +643,12 @@ int main(void)
  3a8:	cd b7       	in	r28, 0x3d	; 61
  3aa:	de b7       	in	r29, 0x3e	; 62
 	u8 x[3];
-	LCD1.ctrl_port=PORTA;
+	LCD1.ctrl_port=porta;
  3ac:	ee e6       	ldi	r30, 0x6E	; 110
  3ae:	f0 e0       	ldi	r31, 0x00	; 0
  3b0:	8b e3       	ldi	r24, 0x3B	; 59
  3b2:	81 83       	std	Z+1, r24	; 0x01
-	LCD1.data_port=PORTB;
+	LCD1.data_port=portb;
  3b4:	88 e3       	ldi	r24, 0x38	; 56
  3b6:	80 83       	st	Z, r24
 	LCD1.RS_pin=7;
@@ -839,7 +839,7 @@ void TWI_Init(u16 freq,u8 slave_addr)
  506:	cf 93       	push	r28
  508:	c6 2f       	mov	r28, r22
     // freq -> Enter freq with KHz for example 400 is 400KHz
-    (*(volatile port_base*)(TWBR))=(F_CPU/(2000L*freq)-8);
+    TWBR=(F_CPU/(2000L*freq)-8);
  50a:	9c 01       	movw	r18, r24
  50c:	a0 ed       	ldi	r26, 0xD0	; 208
  50e:	b7 e0       	ldi	r27, 0x07	; 7
@@ -853,14 +853,14 @@ void TWI_Init(u16 freq,u8 slave_addr)
  520:	0e 94 bc 02 	call	0x578	; 0x578 <__divmodsi4>
  524:	28 50       	subi	r18, 0x08	; 8
  526:	20 b9       	out	0x00, r18	; 0
-	(*(volatile port_base*)(TWSR))=0x00;
+	TWSR=0x00;
  528:	11 b8       	out	0x01, r1	; 1
     // Two Wire Bus address my address if any master device want to call me: use addr (used in case this MC is a slave device)
     // General Call Recognition: Off
-    (*(volatile port_base*)(TWAR))=slave_addr<<1; // my address masking with first bit 	
+   TWAR=slave_addr<<1; // my address masking with first bit 	
  52a:	cc 0f       	add	r28, r28
  52c:	c2 b9       	out	0x02, r28	; 2
-    (*(volatile port_base*)(TWCR))=(1<<2); //enable TWI
+    TWCR=(1<<2); //enable TWI
  52e:	84 e0       	ldi	r24, 0x04	; 4
  530:	86 bf       	out	0x36, r24	; 54
 }
@@ -873,12 +873,12 @@ void TWI_Init(u16 freq,u8 slave_addr)
 	 * send the start bit by TWSTA=1
 	 * Enable TWI Module TWEN=1 
 	 */
-    (*(volatile port_base*)(TWCR)) = (1 << 7) | (1 << 5) | (1 << 2);
+   TWCR = (1 << 7) | (1 << 5) | (1 << 2);
  536:	84 ea       	ldi	r24, 0xA4	; 164
  538:	86 bf       	out	0x36, r24	; 54
     
     // Wait for TWINT flag set in TWCR Register (start bit is send successfully) 
-    while (!((*(volatile port_base*)(TWCR)) & (1 << 7)));
+    while (!(TWCR & (1 << 7)));
  53a:	06 b6       	in	r0, 0x36	; 54
  53c:	07 fe       	sbrs	r0, 7
  53e:	fd cf       	rjmp	.-6      	; 0x53a <TWI_Start+0x4>
@@ -891,7 +891,7 @@ void TWI_Init(u16 freq,u8 slave_addr)
 	 * Enable TWI Module TWEN=1 
 	 * send the stop bit by TWSTO=1
 	 */
-    (*(volatile port_base*)(TWCR)) = (1 << 7) | (1 << 2) | (1 << 4);
+    TWCR = (1 << 7) | (1 << 2) | (1 << 4);
  542:	84 e9       	ldi	r24, 0x94	; 148
  544:	86 bf       	out	0x36, r24	; 54
  546:	08 95       	ret
@@ -902,16 +902,16 @@ void TWI_Init(u16 freq,u8 slave_addr)
 void TWI_Write(u8 data)
 {
     // Put data On TWI Register
-    (*(volatile port_base*)(TWDR)) = data;
+    TWDR = data;
  548:	83 b9       	out	0x03, r24	; 3
     /* Clear the TWINT flag before sending the data TWINT=1
 	 * Enable TWI Module TWEN=1 
 	 */ 
-    (*(volatile port_base*)(TWCR)) = (1 << 7) | (1 << 2);
+    TWCR = (1 << 7) | (1 << 2);
  54a:	84 e8       	ldi	r24, 0x84	; 132
  54c:	86 bf       	out	0x36, r24	; 54
     // Wait for TWINT flag set in TWCR Register(data is send successfully) 
-    while (!((*(volatile port_base*)(TWCR)) & (1 << 7)));
+    while (!(TWCR & (1 << 7)));
  54e:	06 b6       	in	r0, 0x36	; 54
  550:	07 fe       	sbrs	r0, 7
  552:	fd cf       	rjmp	.-6      	; 0x54e <TWI_Write+0x6>
@@ -924,16 +924,16 @@ void TWI_Write(u8 data)
 	 * Enable TWI Module TWEN=1 
 	 * enable sending ACK TWEA=1
 	 */ 
-    (*(volatile port_base*)(TWCR)) = (1 << 7) | (1 << 2) | (1<<6);
+    TWCR = (1 << 7) | (1 << 2) | (1<<6);
  556:	84 ec       	ldi	r24, 0xC4	; 196
  558:	86 bf       	out	0x36, r24	; 54
     // Wait for TWINT flag set in TWCR Register (data received successfully) 
-    while (!((*(volatile port_base*)(TWCR)) & (1 << 7)));
+    while (!(TWCR & (1 << 7)));
  55a:	06 b6       	in	r0, 0x36	; 54
  55c:	07 fe       	sbrs	r0, 7
  55e:	fd cf       	rjmp	.-6      	; 0x55a <TWI_Read_With_ACK+0x4>
     // Read Data
-    return (*(volatile port_base*)(TWDR));
+    return TWDR;
  560:	83 b1       	in	r24, 0x03	; 3
 }
  562:	08 95       	ret
@@ -944,20 +944,20 @@ void TWI_Write(u8 data)
 	 * Enable TWI Module TWEN=1 
 	 * disable sending ACK TWEA=0
 	 */
-    (*(volatile port_base*)(TWCR)) = (1 << 7) | (1 << 2);
+    TWCR = (1 << 7) | (1 << 2);
  564:	84 e8       	ldi	r24, 0x84	; 132
  566:	86 bf       	out	0x36, r24	; 54
-	(*(volatile port_base*)(TWCR)) &=~(1<<6);
+	TWCR &=~(1<<6);
  568:	86 b7       	in	r24, 0x36	; 54
  56a:	8f 7b       	andi	r24, 0xBF	; 191
  56c:	86 bf       	out	0x36, r24	; 54
     // Wait for TWINT flag set in TWCR Register (data received successfully) 
-    while (!((*(volatile port_base*)(TWCR)) & (1 << 7)));
+    while (!(TWCR & (1 << 7)));
  56e:	06 b6       	in	r0, 0x36	; 54
  570:	07 fe       	sbrs	r0, 7
  572:	fd cf       	rjmp	.-6      	; 0x56e <TWI_Read_With_NACK+0xa>
     // Read Data
-    return (*(volatile port_base*)(TWDR));
+    return TWDR;
  574:	83 b1       	in	r24, 0x03	; 3
 }
  576:	08 95       	ret

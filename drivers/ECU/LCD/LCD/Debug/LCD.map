@@ -374,7 +374,7 @@ END GROUP
  *(.gnu.linkonce.d*)
  *(.rodata)
  *(.rodata*)
- .rodata.addr.1990
+ .rodata.addr.1994
                 0x00800060        0x2 ecu_lcd.o
  .rodata.str1.1
                 0x00800062       0x17 main.o
@@ -388,7 +388,7 @@ END GROUP
                 0x0080007a                PROVIDE (__bss_start, .)
  *(.bss)
  *(.bss*)
- .bss.i.1970    0x0080007a        0x2 ecu_lcd.o
+ .bss.i.1974    0x0080007a        0x2 ecu_lcd.o
  *(COMMON)
  COMMON         0x0080007c        0x8 main.o
                 0x0080007c                obj
@@ -479,12 +479,12 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x13e4
+.debug_info     0x00000000     0x1400
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x4e6 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega32/avr5/crtatmega32.o
- .debug_info    0x000004e6      0x283 dio/hal_dio.o
- .debug_info    0x00000769      0x832 ecu_lcd.o
- .debug_info    0x00000f9b      0x449 main.o
+ .debug_info    0x000004e6      0x29f dio/hal_dio.o
+ .debug_info    0x00000785      0x832 ecu_lcd.o
+ .debug_info    0x00000fb7      0x449 main.o
 
 .debug_abbrev   0x00000000      0x94a
  *(.debug_abbrev)
@@ -493,12 +493,12 @@ END GROUP
  .debug_abbrev  0x0000057e      0x272 ecu_lcd.o
  .debug_abbrev  0x000007f0      0x15a main.o
 
-.debug_line     0x00000000      0x72e
+.debug_line     0x00000000      0x728
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x115 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega32/avr5/crtatmega32.o
- .debug_line    0x00000115      0x13c dio/hal_dio.o
- .debug_line    0x00000251      0x321 ecu_lcd.o
- .debug_line    0x00000572      0x1bc main.o
+ .debug_line    0x00000115      0x12e dio/hal_dio.o
+ .debug_line    0x00000243      0x321 ecu_lcd.o
+ .debug_line    0x00000564      0x1c4 main.o
 
 .debug_frame    0x00000000      0x1c4
  *(.debug_frame)
@@ -509,9 +509,9 @@ END GROUP
 .debug_str      0x00000000      0x595
  *(.debug_str)
  .debug_str     0x00000000      0x196 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega32/avr5/crtatmega32.o
- .debug_str     0x00000196      0x213 dio/hal_dio.o
-                                0x233 (size before relaxing)
- .debug_str     0x000003a9      0x1db ecu_lcd.o
+ .debug_str     0x00000196      0x238 dio/hal_dio.o
+                                0x271 (size before relaxing)
+ .debug_str     0x000003ce      0x1b6 ecu_lcd.o
                                 0x36c (size before relaxing)
  .debug_str     0x00000584       0x11 main.o
                                 0x325 (size before relaxing)

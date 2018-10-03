@@ -12,8 +12,8 @@ int x=0;
 config_lcd_pin LCD1;
 int main(void)
 {
-	LCD1.ctrl_port=PORTA;
-	LCD1.data_port=PORTB;
+	LCD1.ctrl_port=porta;
+	LCD1.data_port=portb;
 	LCD1.RS_pin=7;
 	LCD1.E_pin=6;
 	LCD1.data_pin[0]=4;
@@ -25,7 +25,7 @@ int main(void)
 	_delay_ms(1000);
 	lcd_cmd(&LCD1,LCD_CLEAR);	
     ext_eeprom_init(100);
-	ext_eeprom_write(0,01,57);
+	ext_eeprom_write(0,01,55);
 	_delay_ms(10);
 	y=ext_eeprom_read(0,01);
 	lcd_cmd(&LCD1,LCD_CLEAR);

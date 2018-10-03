@@ -10,7 +10,6 @@
 #define HAL_UART_H_
 
 #include "common.h"
-#include "reg_addr.h"
 
 typedef enum
 {

@@ -490,7 +490,7 @@ END GROUP
  *(.gnu.linkonce.d*)
  *(.rodata)
  *(.rodata*)
- .rodata.addr.1993
+ .rodata.addr.1994
                 0x00800060        0x2 LCD/ecu_lcd.o
  .rodata.str1.1
                 0x00800062        0xa main.o
@@ -503,7 +503,7 @@ END GROUP
                 0x0080006c                PROVIDE (__bss_start, .)
  *(.bss)
  *(.bss*)
- .bss.i.1973    0x0080006c        0x2 LCD/ecu_lcd.o
+ .bss.i.1974    0x0080006c        0x2 LCD/ecu_lcd.o
  *(COMMON)
  COMMON         0x0080006e        0x8 main.o
                 0x0080006e                LCD1
@@ -600,32 +600,32 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x19cf
+.debug_info     0x00000000     0x1977
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x4e6 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega32/avr5/crtatmega32.o
- .debug_info    0x000004e6      0x295 LCD/DIO/hal_dio.o
- .debug_info    0x0000077b      0x832 LCD/ecu_lcd.o
- .debug_info    0x00000fad      0x391 main.o
- .debug_info    0x0000133e      0x4c4 ecu_rtc.o
- .debug_info    0x00001802      0x1cd TWI/hal_twi.o
+ .debug_info    0x000004e6      0x29f LCD/DIO/hal_dio.o
+ .debug_info    0x00000785      0x832 LCD/ecu_lcd.o
+ .debug_info    0x00000fb7      0x37f main.o
+ .debug_info    0x00001336      0x4c4 ecu_rtc.o
+ .debug_info    0x000017fa      0x17d TWI/hal_twi.o
 
-.debug_abbrev   0x00000000      0xb92
+.debug_abbrev   0x00000000      0xb85
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0x4a3 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega32/avr5/crtatmega32.o
  .debug_abbrev  0x000004a3       0xdb LCD/DIO/hal_dio.o
  .debug_abbrev  0x0000057e      0x272 LCD/ecu_lcd.o
  .debug_abbrev  0x000007f0      0x174 main.o
  .debug_abbrev  0x00000964      0x13d ecu_rtc.o
- .debug_abbrev  0x00000aa1       0xf1 TWI/hal_twi.o
+ .debug_abbrev  0x00000aa1       0xe4 TWI/hal_twi.o
 
-.debug_line     0x00000000      0xb2a
+.debug_line     0x00000000      0xb83
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x115 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega32/avr5/crtatmega32.o
- .debug_line    0x00000115      0x143 LCD/DIO/hal_dio.o
- .debug_line    0x00000258      0x334 LCD/ecu_lcd.o
- .debug_line    0x0000058c      0x1b6 main.o
- .debug_line    0x00000742      0x27d ecu_rtc.o
- .debug_line    0x000009bf      0x16b TWI/hal_twi.o
+ .debug_line    0x00000115      0x135 LCD/DIO/hal_dio.o
+ .debug_line    0x0000024a      0x334 LCD/ecu_lcd.o
+ .debug_line    0x0000057e      0x1c9 main.o
+ .debug_line    0x00000747      0x27d ecu_rtc.o
+ .debug_line    0x000009c4      0x1bf TWI/hal_twi.o
 
 .debug_frame    0x00000000      0x324
  *(.debug_frame)
@@ -635,19 +635,19 @@ END GROUP
  .debug_frame   0x000001d4       0xc4 ecu_rtc.o
  .debug_frame   0x00000298       0x8c TWI/hal_twi.o
 
-.debug_str      0x00000000      0x67e
+.debug_str      0x00000000      0x691
  *(.debug_str)
  .debug_str     0x00000000      0x196 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega32/avr5/crtatmega32.o
- .debug_str     0x00000196      0x20c LCD/DIO/hal_dio.o
-                                0x22c (size before relaxing)
- .debug_str     0x000003a2      0x1d8 LCD/ecu_lcd.o
+ .debug_str     0x00000196      0x23c LCD/DIO/hal_dio.o
+                                0x275 (size before relaxing)
+ .debug_str     0x000003d2      0x1b3 LCD/ecu_lcd.o
                                 0x36e (size before relaxing)
- .debug_str     0x0000057a       0x3a main.o
-                                0x2b8 (size before relaxing)
- .debug_str     0x000005b4       0x93 ecu_rtc.o
+ .debug_str     0x00000585       0x3a main.o
+                                0x2c3 (size before relaxing)
+ .debug_str     0x000005bf       0x93 ecu_rtc.o
                                 0x279 (size before relaxing)
- .debug_str     0x00000647       0x37 TWI/hal_twi.o
-                                0x223 (size before relaxing)
+ .debug_str     0x00000652       0x3f TWI/hal_twi.o
+                                0x206 (size before relaxing)
 
 .debug_loc      0x00000000      0xe0b
  *(.debug_loc)

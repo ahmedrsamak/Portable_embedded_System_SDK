@@ -456,36 +456,36 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000      0x86d
+.debug_info     0x00000000      0x832
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x4e6 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega32/avr5/crtatmega32.o
- .debug_info    0x000004e6      0x1bf hal_twi.o
- .debug_info    0x000006a5      0x1c8 main.o
+ .debug_info    0x000004e6      0x17d hal_twi.o
+ .debug_info    0x00000663      0x1cf main.o
 
-.debug_abbrev   0x00000000      0x615
+.debug_abbrev   0x00000000      0x608
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0x4a3 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega32/avr5/crtatmega32.o
- .debug_abbrev  0x000004a3       0xf1 hal_twi.o
- .debug_abbrev  0x00000594       0x81 main.o
+ .debug_abbrev  0x000004a3       0xe4 hal_twi.o
+ .debug_abbrev  0x00000587       0x81 main.o
 
-.debug_line     0x00000000      0x30d
+.debug_line     0x00000000      0x361
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x115 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega32/avr5/crtatmega32.o
- .debug_line    0x00000115      0x158 hal_twi.o
- .debug_line    0x0000026d       0xa0 main.o
+ .debug_line    0x00000115      0x1ac hal_twi.o
+ .debug_line    0x000002c1       0xa0 main.o
 
 .debug_frame    0x00000000       0xb0
  *(.debug_frame)
  .debug_frame   0x00000000       0x8c hal_twi.o
  .debug_frame   0x0000008c       0x24 main.o
 
-.debug_str      0x00000000      0x3d0
+.debug_str      0x00000000      0x377
  *(.debug_str)
  .debug_str     0x00000000      0x196 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega32/avr5/crtatmega32.o
- .debug_str     0x00000196      0x204 hal_twi.o
-                                0x216 (size before relaxing)
- .debug_str     0x0000039a       0x36 main.o
-                                0x1ac (size before relaxing)
+ .debug_str     0x00000196      0x1d0 hal_twi.o
+                                0x204 (size before relaxing)
+ .debug_str     0x00000366       0x11 main.o
+                                0x1ae (size before relaxing)
 
 .debug_loc      0x00000000       0xc4
  *(.debug_loc)

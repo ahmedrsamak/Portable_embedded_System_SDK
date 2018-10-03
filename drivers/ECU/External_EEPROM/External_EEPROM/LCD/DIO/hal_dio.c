@@ -5,14 +5,13 @@
  *  Author: ahmed
  */ 
 #include "hal_dio.h"
-int ret;
 void dio_set_port_dir(port_base port,dir mode)
 {
 	if (mode==OUTPUT)
 	{
 		(*(volatile port_base*)(port-1))=0xFF;
 	}
-	else if(mode==INPUT)
+	else if(mode == INPUT)
 	{
 		(*(volatile port_base*)(port-1))=0x00;
 	}
@@ -38,7 +37,7 @@ void dio_write_port(port_base port,state mode)
 	{
 		(*(volatile port_base*)(port))=0xFF;
 	}
-	else if(mode==LOW)
+	else if(mode == LOW)
 	{
 		(*(volatile port_base*)(port))=0x00;
 	}
@@ -64,7 +63,5 @@ u8 dio_read_port(port_base port)
 }
 u8 dio_read_pin(port_base port,u8 pin)
 {
-	
 	return ((*(volatile port_base*)(port-2))&(1<<pin))>>pin;
-	
 }

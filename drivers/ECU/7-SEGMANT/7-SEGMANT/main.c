@@ -13,7 +13,7 @@ int main(void)
 	obj.pins[1]=1;
 	obj.pins[2]=2;
 	obj.pins[3]=3;
-	obj.port=PORTB;
+	obj.port=portb;
 	
    sev_segm_init(&obj);
    for (int i=0;i<=9;i++)

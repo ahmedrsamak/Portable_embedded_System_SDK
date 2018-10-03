@@ -9,7 +9,25 @@
 #ifndef HAL_DIO_H_
 #define HAL_DIO_H_
 #include "../../common.h"
-#include "../../reg_addr.h"
+
+typedef enum
+{
+	INVALID_MIN_INDEX=0x2F,
+	pind = 0X30,
+	ddrd,
+	portd,
+	pinc,
+	ddrc,
+	portc,
+	pinb,
+	ddrb,
+	portb,
+	pina,
+	ddra,
+	porta,
+	INVALID_MAX_INDEX,
+}port_base;
+
 typedef enum
 {
 OUTPUT=1,

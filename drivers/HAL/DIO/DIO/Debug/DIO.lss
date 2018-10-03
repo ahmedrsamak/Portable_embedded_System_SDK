@@ -3,29 +3,29 @@ DIO.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .text         000001b0  00000000  00000000  00000054  2**1
+  0 .text         000001ca  00000000  00000000  00000054  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  1 .data         00000000  00800060  00800060  00000204  2**0
+  1 .data         00000000  00800060  00800060  0000021e  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  2 .comment      00000030  00000000  00000000  00000204  2**0
+  2 .comment      00000030  00000000  00000000  0000021e  2**0
                   CONTENTS, READONLY
-  3 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000234  2**2
+  3 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000250  2**2
                   CONTENTS, READONLY
-  4 .debug_aranges 00000068  00000000  00000000  00000270  2**0
+  4 .debug_aranges 00000068  00000000  00000000  0000028c  2**0
                   CONTENTS, READONLY, DEBUGGING
-  5 .debug_info   000009a9  00000000  00000000  000002d8  2**0
+  5 .debug_info   000009fb  00000000  00000000  000002f4  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_abbrev 00000620  00000000  00000000  00000c81  2**0
+  6 .debug_abbrev 00000620  00000000  00000000  00000cef  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_line   000002b8  00000000  00000000  000012a1  2**0
+  7 .debug_line   000002b5  00000000  00000000  0000130f  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_frame  00000098  00000000  00000000  0000155c  2**2
+  8 .debug_frame  00000098  00000000  00000000  000015c4  2**2
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_str    000003c0  00000000  00000000  000015f4  2**0
+  9 .debug_str    000003dd  00000000  00000000  0000165c  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_loc    00000105  00000000  00000000  000019b4  2**0
+ 10 .debug_loc    00000105  00000000  00000000  00001a39  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_ranges 00000048  00000000  00000000  00001ab9  2**0
+ 11 .debug_ranges 00000048  00000000  00000000  00001b3e  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -74,8 +74,8 @@ Disassembly of section .text:
   6a:	a0 36       	cpi	r26, 0x60	; 96
   6c:	b2 07       	cpc	r27, r18
   6e:	e1 f7       	brne	.-8      	; 0x68 <.do_clear_bss_loop>
-  70:	0e 94 aa 00 	call	0x154	; 0x154 <main>
-  74:	0c 94 d6 00 	jmp	0x1ac	; 0x1ac <_exit>
+  70:	0e 94 b7 00 	call	0x16e	; 0x16e <main>
+  74:	0c 94 e3 00 	jmp	0x1c6	; 0x1c6 <_exit>
 
 00000078 <__bad_interrupt>:
   78:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
@@ -87,7 +87,7 @@ int ret;
 void dio_set_port_dir(port_base port,dir mode)
 {
 	if (mode==OUTPUT)
-  7c:	6f 3f       	cpi	r22, 0xFF	; 255
+  7c:	61 30       	cpi	r22, 0x01	; 1
   7e:	31 f4       	brne	.+12     	; 0x8c <dio_set_port_dir+0x10>
 	{
 		(*(volatile port_base*)(port-1))=0xFF;
@@ -98,217 +98,236 @@ void dio_set_port_dir(port_base port,dir mode)
   88:	80 83       	st	Z, r24
   8a:	08 95       	ret
 	}
-	else
+	else if(mode == INPUT)
+  8c:	61 11       	cpse	r22, r1
+  8e:	05 c0       	rjmp	.+10     	; 0x9a <dio_set_port_dir+0x1e>
 	{
 		(*(volatile port_base*)(port-1))=0x00;
-  8c:	e8 2f       	mov	r30, r24
-  8e:	f0 e0       	ldi	r31, 0x00	; 0
-  90:	31 97       	sbiw	r30, 0x01	; 1
-  92:	10 82       	st	Z, r1
-  94:	08 95       	ret
+  90:	e8 2f       	mov	r30, r24
+  92:	f0 e0       	ldi	r31, 0x00	; 0
+  94:	31 97       	sbiw	r30, 0x01	; 1
+  96:	10 82       	st	Z, r1
+  98:	08 95       	ret
+	}
+	else
+	{
+	 (*(volatile port_base*)(port-1))=mode;	
+  9a:	e8 2f       	mov	r30, r24
+  9c:	f0 e0       	ldi	r31, 0x00	; 0
+  9e:	31 97       	sbiw	r30, 0x01	; 1
+  a0:	60 83       	st	Z, r22
+  a2:	08 95       	ret
 
-00000096 <dio_set_pin_dir>:
+000000a4 <dio_set_pin_dir>:
 	}
 }
 void dio_set_pin_dir(port_base port,u8 pin,dir mode)
 {
 	if (mode==OUTPUT)
-  96:	4f 3f       	cpi	r20, 0xFF	; 255
-  98:	69 f4       	brne	.+26     	; 0xb4 <dio_set_pin_dir+0x1e>
+  a4:	41 30       	cpi	r20, 0x01	; 1
+  a6:	69 f4       	brne	.+26     	; 0xc2 <dio_set_pin_dir+0x1e>
 	{
 		(*(volatile port_base*)(port-1))|=(1<<pin);
-  9a:	e8 2f       	mov	r30, r24
-  9c:	f0 e0       	ldi	r31, 0x00	; 0
-  9e:	22 91       	ld	r18, -Z
-  a0:	81 e0       	ldi	r24, 0x01	; 1
-  a2:	90 e0       	ldi	r25, 0x00	; 0
-  a4:	02 c0       	rjmp	.+4      	; 0xaa <dio_set_pin_dir+0x14>
-  a6:	88 0f       	add	r24, r24
-  a8:	99 1f       	adc	r25, r25
-  aa:	6a 95       	dec	r22
-  ac:	e2 f7       	brpl	.-8      	; 0xa6 <dio_set_pin_dir+0x10>
-  ae:	82 2b       	or	r24, r18
-  b0:	80 83       	st	Z, r24
-  b2:	08 95       	ret
+  a8:	e8 2f       	mov	r30, r24
+  aa:	f0 e0       	ldi	r31, 0x00	; 0
+  ac:	22 91       	ld	r18, -Z
+  ae:	81 e0       	ldi	r24, 0x01	; 1
+  b0:	90 e0       	ldi	r25, 0x00	; 0
+  b2:	02 c0       	rjmp	.+4      	; 0xb8 <dio_set_pin_dir+0x14>
+  b4:	88 0f       	add	r24, r24
+  b6:	99 1f       	adc	r25, r25
+  b8:	6a 95       	dec	r22
+  ba:	e2 f7       	brpl	.-8      	; 0xb4 <dio_set_pin_dir+0x10>
+  bc:	82 2b       	or	r24, r18
+  be:	80 83       	st	Z, r24
+  c0:	08 95       	ret
 	}
 	else
 	{
 		(*(volatile port_base*)(port-1))&=~(1<<pin);
-  b4:	e8 2f       	mov	r30, r24
-  b6:	f0 e0       	ldi	r31, 0x00	; 0
-  b8:	22 91       	ld	r18, -Z
-  ba:	81 e0       	ldi	r24, 0x01	; 1
-  bc:	90 e0       	ldi	r25, 0x00	; 0
-  be:	02 c0       	rjmp	.+4      	; 0xc4 <dio_set_pin_dir+0x2e>
-  c0:	88 0f       	add	r24, r24
-  c2:	99 1f       	adc	r25, r25
-  c4:	6a 95       	dec	r22
-  c6:	e2 f7       	brpl	.-8      	; 0xc0 <dio_set_pin_dir+0x2a>
-  c8:	80 95       	com	r24
-  ca:	82 23       	and	r24, r18
-  cc:	80 83       	st	Z, r24
-  ce:	08 95       	ret
+  c2:	e8 2f       	mov	r30, r24
+  c4:	f0 e0       	ldi	r31, 0x00	; 0
+  c6:	22 91       	ld	r18, -Z
+  c8:	81 e0       	ldi	r24, 0x01	; 1
+  ca:	90 e0       	ldi	r25, 0x00	; 0
+  cc:	02 c0       	rjmp	.+4      	; 0xd2 <dio_set_pin_dir+0x2e>
+  ce:	88 0f       	add	r24, r24
+  d0:	99 1f       	adc	r25, r25
+  d2:	6a 95       	dec	r22
+  d4:	e2 f7       	brpl	.-8      	; 0xce <dio_set_pin_dir+0x2a>
+  d6:	80 95       	com	r24
+  d8:	82 23       	and	r24, r18
+  da:	80 83       	st	Z, r24
+  dc:	08 95       	ret
 
-000000d0 <dio_write_port>:
+000000de <dio_write_port>:
 	}
 }
 void dio_write_port(port_base port,state mode)
 {
 	if (mode==HIGH)
-  d0:	61 30       	cpi	r22, 0x01	; 1
-  d2:	29 f4       	brne	.+10     	; 0xde <dio_write_port+0xe>
+  de:	61 30       	cpi	r22, 0x01	; 1
+  e0:	29 f4       	brne	.+10     	; 0xec <dio_write_port+0xe>
 	{
 		(*(volatile port_base*)(port))=0xFF;
-  d4:	e8 2f       	mov	r30, r24
-  d6:	f0 e0       	ldi	r31, 0x00	; 0
-  d8:	8f ef       	ldi	r24, 0xFF	; 255
-  da:	80 83       	st	Z, r24
-  dc:	08 95       	ret
+  e2:	e8 2f       	mov	r30, r24
+  e4:	f0 e0       	ldi	r31, 0x00	; 0
+  e6:	8f ef       	ldi	r24, 0xFF	; 255
+  e8:	80 83       	st	Z, r24
+  ea:	08 95       	ret
+	}
+	else if(mode == LOW)
+  ec:	61 11       	cpse	r22, r1
+  ee:	04 c0       	rjmp	.+8      	; 0xf8 <dio_write_port+0x1a>
+	{
+		(*(volatile port_base*)(port))=0x00;
+  f0:	e8 2f       	mov	r30, r24
+  f2:	f0 e0       	ldi	r31, 0x00	; 0
+  f4:	10 82       	st	Z, r1
+  f6:	08 95       	ret
 	}
 	else
 	{
-		(*(volatile port_base*)(port))=0x00;
-  de:	e8 2f       	mov	r30, r24
-  e0:	f0 e0       	ldi	r31, 0x00	; 0
-  e2:	10 82       	st	Z, r1
-  e4:	08 95       	ret
+		(*(volatile port_base*)(port))=mode;
+  f8:	e8 2f       	mov	r30, r24
+  fa:	f0 e0       	ldi	r31, 0x00	; 0
+  fc:	60 83       	st	Z, r22
+  fe:	08 95       	ret
 
-000000e6 <dio_write_pin>:
+00000100 <dio_write_pin>:
 	}
 }
 void dio_write_pin(port_base port,u8 pin,state mode)
 {
 	if (mode==HIGH)
-  e6:	41 30       	cpi	r20, 0x01	; 1
-  e8:	69 f4       	brne	.+26     	; 0x104 <dio_write_pin+0x1e>
+ 100:	41 30       	cpi	r20, 0x01	; 1
+ 102:	69 f4       	brne	.+26     	; 0x11e <dio_write_pin+0x1e>
 	{
 		(*(volatile port_base*)(port))|=(1<<pin);
-  ea:	e8 2f       	mov	r30, r24
-  ec:	f0 e0       	ldi	r31, 0x00	; 0
-  ee:	20 81       	ld	r18, Z
-  f0:	81 e0       	ldi	r24, 0x01	; 1
-  f2:	90 e0       	ldi	r25, 0x00	; 0
-  f4:	02 c0       	rjmp	.+4      	; 0xfa <dio_write_pin+0x14>
-  f6:	88 0f       	add	r24, r24
-  f8:	99 1f       	adc	r25, r25
-  fa:	6a 95       	dec	r22
-  fc:	e2 f7       	brpl	.-8      	; 0xf6 <dio_write_pin+0x10>
-  fe:	82 2b       	or	r24, r18
- 100:	80 83       	st	Z, r24
- 102:	08 95       	ret
-	}
-	else
-	{
-		(*(volatile port_base*)(port))&=~(1<<pin);
  104:	e8 2f       	mov	r30, r24
  106:	f0 e0       	ldi	r31, 0x00	; 0
  108:	20 81       	ld	r18, Z
  10a:	81 e0       	ldi	r24, 0x01	; 1
  10c:	90 e0       	ldi	r25, 0x00	; 0
- 10e:	02 c0       	rjmp	.+4      	; 0x114 <dio_write_pin+0x2e>
+ 10e:	02 c0       	rjmp	.+4      	; 0x114 <dio_write_pin+0x14>
  110:	88 0f       	add	r24, r24
  112:	99 1f       	adc	r25, r25
  114:	6a 95       	dec	r22
- 116:	e2 f7       	brpl	.-8      	; 0x110 <dio_write_pin+0x2a>
- 118:	80 95       	com	r24
- 11a:	82 23       	and	r24, r18
- 11c:	80 83       	st	Z, r24
- 11e:	08 95       	ret
+ 116:	e2 f7       	brpl	.-8      	; 0x110 <dio_write_pin+0x10>
+ 118:	82 2b       	or	r24, r18
+ 11a:	80 83       	st	Z, r24
+ 11c:	08 95       	ret
+	}
+	else
+	{
+		(*(volatile port_base*)(port))&=~(1<<pin);
+ 11e:	e8 2f       	mov	r30, r24
+ 120:	f0 e0       	ldi	r31, 0x00	; 0
+ 122:	20 81       	ld	r18, Z
+ 124:	81 e0       	ldi	r24, 0x01	; 1
+ 126:	90 e0       	ldi	r25, 0x00	; 0
+ 128:	02 c0       	rjmp	.+4      	; 0x12e <dio_write_pin+0x2e>
+ 12a:	88 0f       	add	r24, r24
+ 12c:	99 1f       	adc	r25, r25
+ 12e:	6a 95       	dec	r22
+ 130:	e2 f7       	brpl	.-8      	; 0x12a <dio_write_pin+0x2a>
+ 132:	80 95       	com	r24
+ 134:	82 23       	and	r24, r18
+ 136:	80 83       	st	Z, r24
+ 138:	08 95       	ret
 
-00000120 <dio_read_port>:
+0000013a <dio_read_port>:
 	}
 }
 u8 dio_read_port(port_base port)
 {
 	return(*(volatile port_base*)(port-2));
- 120:	e8 2f       	mov	r30, r24
- 122:	f0 e0       	ldi	r31, 0x00	; 0
- 124:	32 97       	sbiw	r30, 0x02	; 2
- 126:	80 81       	ld	r24, Z
+ 13a:	e8 2f       	mov	r30, r24
+ 13c:	f0 e0       	ldi	r31, 0x00	; 0
+ 13e:	32 97       	sbiw	r30, 0x02	; 2
+ 140:	80 81       	ld	r24, Z
 }
- 128:	08 95       	ret
+ 142:	08 95       	ret
 
-0000012a <dio_read_pin>:
+00000144 <dio_read_pin>:
 u8 dio_read_pin(port_base port,u8 pin)
 {
-	
-	return ((*(volatile port_base*)(port-2))&(1<<pin))>>pin;
- 12a:	e8 2f       	mov	r30, r24
- 12c:	f0 e0       	ldi	r31, 0x00	; 0
- 12e:	32 97       	sbiw	r30, 0x02	; 2
- 130:	20 81       	ld	r18, Z
- 132:	81 e0       	ldi	r24, 0x01	; 1
- 134:	90 e0       	ldi	r25, 0x00	; 0
- 136:	06 2e       	mov	r0, r22
- 138:	02 c0       	rjmp	.+4      	; 0x13e <dio_read_pin+0x14>
- 13a:	88 0f       	add	r24, r24
- 13c:	99 1f       	adc	r25, r25
- 13e:	0a 94       	dec	r0
- 140:	e2 f7       	brpl	.-8      	; 0x13a <dio_read_pin+0x10>
- 142:	30 e0       	ldi	r19, 0x00	; 0
- 144:	82 23       	and	r24, r18
- 146:	93 23       	and	r25, r19
- 148:	02 c0       	rjmp	.+4      	; 0x14e <dio_read_pin+0x24>
- 14a:	95 95       	asr	r25
- 14c:	87 95       	ror	r24
- 14e:	6a 95       	dec	r22
- 150:	e2 f7       	brpl	.-8      	; 0x14a <dio_read_pin+0x20>
-	
- 152:	08 95       	ret
+	return ((*(volatile port_base*)(port-2))&(1<<pin))>>pin;	
+ 144:	e8 2f       	mov	r30, r24
+ 146:	f0 e0       	ldi	r31, 0x00	; 0
+ 148:	32 97       	sbiw	r30, 0x02	; 2
+ 14a:	20 81       	ld	r18, Z
+ 14c:	81 e0       	ldi	r24, 0x01	; 1
+ 14e:	90 e0       	ldi	r25, 0x00	; 0
+ 150:	06 2e       	mov	r0, r22
+ 152:	02 c0       	rjmp	.+4      	; 0x158 <dio_read_pin+0x14>
+ 154:	88 0f       	add	r24, r24
+ 156:	99 1f       	adc	r25, r25
+ 158:	0a 94       	dec	r0
+ 15a:	e2 f7       	brpl	.-8      	; 0x154 <dio_read_pin+0x10>
+ 15c:	30 e0       	ldi	r19, 0x00	; 0
+ 15e:	82 23       	and	r24, r18
+ 160:	93 23       	and	r25, r19
+ 162:	02 c0       	rjmp	.+4      	; 0x168 <dio_read_pin+0x24>
+ 164:	95 95       	asr	r25
+ 166:	87 95       	ror	r24
+ 168:	6a 95       	dec	r22
+ 16a:	e2 f7       	brpl	.-8      	; 0x164 <dio_read_pin+0x20>
+ 16c:	08 95       	ret
 
-00000154 <main>:
+0000016e <main>:
 
 
 #include "hal_dio.h"
 int main(void)
 {
-   dio_set_port_dir(PORTA,OUTPUT);
- 154:	6f ef       	ldi	r22, 0xFF	; 255
- 156:	8b e3       	ldi	r24, 0x3B	; 59
- 158:	0e 94 3e 00 	call	0x7c	; 0x7c <dio_set_port_dir>
-   dio_set_port_dir(PORTB,INPUT);
- 15c:	60 e0       	ldi	r22, 0x00	; 0
- 15e:	88 e3       	ldi	r24, 0x38	; 56
- 160:	0e 94 3e 00 	call	0x7c	; 0x7c <dio_set_port_dir>
-   dio_set_pin_dir(PORTC,3,OUTPUT);
- 164:	4f ef       	ldi	r20, 0xFF	; 255
- 166:	63 e0       	ldi	r22, 0x03	; 3
- 168:	85 e3       	ldi	r24, 0x35	; 53
- 16a:	0e 94 4b 00 	call	0x96	; 0x96 <dio_set_pin_dir>
-   dio_set_pin_dir(PORTC,4,INPUT);
- 16e:	40 e0       	ldi	r20, 0x00	; 0
- 170:	64 e0       	ldi	r22, 0x04	; 4
- 172:	85 e3       	ldi	r24, 0x35	; 53
- 174:	0e 94 4b 00 	call	0x96	; 0x96 <dio_set_pin_dir>
-   dio_write_port(PORTA,HIGH);
- 178:	61 e0       	ldi	r22, 0x01	; 1
- 17a:	8b e3       	ldi	r24, 0x3B	; 59
- 17c:	0e 94 68 00 	call	0xd0	; 0xd0 <dio_write_port>
-   dio_write_port(PORTA,LOW);
- 180:	60 e0       	ldi	r22, 0x00	; 0
- 182:	8b e3       	ldi	r24, 0x3B	; 59
- 184:	0e 94 68 00 	call	0xd0	; 0xd0 <dio_write_port>
-   dio_write_pin(PORTC,3,HIGH);
- 188:	41 e0       	ldi	r20, 0x01	; 1
- 18a:	63 e0       	ldi	r22, 0x03	; 3
+   dio_set_port_dir(porta,OUTPUT);
+ 16e:	61 e0       	ldi	r22, 0x01	; 1
+ 170:	8b e3       	ldi	r24, 0x3B	; 59
+ 172:	0e 94 3e 00 	call	0x7c	; 0x7c <dio_set_port_dir>
+   dio_set_port_dir(portb,INPUT);
+ 176:	60 e0       	ldi	r22, 0x00	; 0
+ 178:	88 e3       	ldi	r24, 0x38	; 56
+ 17a:	0e 94 3e 00 	call	0x7c	; 0x7c <dio_set_port_dir>
+   dio_set_pin_dir(portc,3,OUTPUT);
+ 17e:	41 e0       	ldi	r20, 0x01	; 1
+ 180:	63 e0       	ldi	r22, 0x03	; 3
+ 182:	85 e3       	ldi	r24, 0x35	; 53
+ 184:	0e 94 52 00 	call	0xa4	; 0xa4 <dio_set_pin_dir>
+   dio_set_pin_dir(portc,4,INPUT);
+ 188:	40 e0       	ldi	r20, 0x00	; 0
+ 18a:	64 e0       	ldi	r22, 0x04	; 4
  18c:	85 e3       	ldi	r24, 0x35	; 53
- 18e:	0e 94 73 00 	call	0xe6	; 0xe6 <dio_write_pin>
-   dio_write_pin(PORTC,3,LOW);
- 192:	40 e0       	ldi	r20, 0x00	; 0
- 194:	63 e0       	ldi	r22, 0x03	; 3
- 196:	85 e3       	ldi	r24, 0x35	; 53
- 198:	0e 94 73 00 	call	0xe6	; 0xe6 <dio_write_pin>
-   dio_read_port(PORTB);
- 19c:	88 e3       	ldi	r24, 0x38	; 56
- 19e:	0e 94 90 00 	call	0x120	; 0x120 <dio_read_port>
-   dio_read_pin(PORTC,4);
- 1a2:	64 e0       	ldi	r22, 0x04	; 4
- 1a4:	85 e3       	ldi	r24, 0x35	; 53
- 1a6:	0e 94 95 00 	call	0x12a	; 0x12a <dio_read_pin>
- 1aa:	ff cf       	rjmp	.-2      	; 0x1aa <main+0x56>
+ 18e:	0e 94 52 00 	call	0xa4	; 0xa4 <dio_set_pin_dir>
+   dio_write_port(porta,HIGH);
+ 192:	61 e0       	ldi	r22, 0x01	; 1
+ 194:	8b e3       	ldi	r24, 0x3B	; 59
+ 196:	0e 94 6f 00 	call	0xde	; 0xde <dio_write_port>
+   dio_write_port(porta,LOW);
+ 19a:	60 e0       	ldi	r22, 0x00	; 0
+ 19c:	8b e3       	ldi	r24, 0x3B	; 59
+ 19e:	0e 94 6f 00 	call	0xde	; 0xde <dio_write_port>
+   dio_write_pin(portc,3,HIGH);
+ 1a2:	41 e0       	ldi	r20, 0x01	; 1
+ 1a4:	63 e0       	ldi	r22, 0x03	; 3
+ 1a6:	85 e3       	ldi	r24, 0x35	; 53
+ 1a8:	0e 94 80 00 	call	0x100	; 0x100 <dio_write_pin>
+   dio_write_pin(portc,3,LOW);
+ 1ac:	40 e0       	ldi	r20, 0x00	; 0
+ 1ae:	63 e0       	ldi	r22, 0x03	; 3
+ 1b0:	85 e3       	ldi	r24, 0x35	; 53
+ 1b2:	0e 94 80 00 	call	0x100	; 0x100 <dio_write_pin>
+   dio_read_port(portb);
+ 1b6:	88 e3       	ldi	r24, 0x38	; 56
+ 1b8:	0e 94 9d 00 	call	0x13a	; 0x13a <dio_read_port>
+   dio_read_pin(portc,4);
+ 1bc:	64 e0       	ldi	r22, 0x04	; 4
+ 1be:	85 e3       	ldi	r24, 0x35	; 53
+ 1c0:	0e 94 a2 00 	call	0x144	; 0x144 <dio_read_pin>
+ 1c4:	ff cf       	rjmp	.-2      	; 0x1c4 <main+0x56>
 
-000001ac <_exit>:
- 1ac:	f8 94       	cli
+000001c6 <_exit>:
+ 1c6:	f8 94       	cli
 
-000001ae <__stop_program>:
- 1ae:	ff cf       	rjmp	.-2      	; 0x1ae <__stop_program>
+000001c8 <__stop_program>:
+ 1c8:	ff cf       	rjmp	.-2      	; 0x1c8 <__stop_program>

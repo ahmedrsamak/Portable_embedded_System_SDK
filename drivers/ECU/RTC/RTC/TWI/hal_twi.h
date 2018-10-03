@@ -11,7 +11,6 @@
 #define TWI_H_
 
 #include "../common.h"
-#include "../reg_addr.h"
 
 #define TW_START         0x08 // start has been sent
 #define TW_REP_START     0x10 // repeated start

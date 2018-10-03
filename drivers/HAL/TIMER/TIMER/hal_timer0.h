@@ -9,7 +9,7 @@
 #ifndef HAL_TIMER_H_
 #define HAL_TIMER_H_
 #include "common.h"
-#include <avr/interrupt.h>
+
 //#include "reg_addr.h"
 typedef enum
 {

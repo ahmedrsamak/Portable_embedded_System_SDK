@@ -11,8 +11,8 @@ config_lcd_pin LCD1;
 int main(void)
 {
 	u8 x[3];
-	LCD1.ctrl_port=PORTA;
-	LCD1.data_port=PORTB;
+	LCD1.ctrl_port=porta;
+	LCD1.data_port=portb;
 	LCD1.RS_pin=7;
 	LCD1.E_pin=6;
 	LCD1.data_pin[0]=4;

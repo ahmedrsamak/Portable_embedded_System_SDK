@@ -14,8 +14,8 @@ int main(void)
 	obj.data_pin[3]=7;
 	obj.E_pin=6;
 	obj.RS_pin=7;
-	obj.ctrl_port=PORTA;
-	obj.data_port=PORTB;
+	obj.ctrl_port=porta;
+	obj.data_port=portb;
 	lcd_init(&obj);
 	
 	//lcd_cmd(&obj,LCD_ON_CURSOR_OFF);
