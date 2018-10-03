@@ -409,11 +409,11 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000      0x813
+.debug_info     0x00000000      0x812
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x4e6 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega32/avr5/crtatmega32.o
  .debug_info    0x000004e6      0x1cb hal_timer0.o
- .debug_info    0x000006b1      0x162 main.o
+ .debug_info    0x000006b1      0x161 main.o
 
 .debug_abbrev   0x00000000      0x67a
  *(.debug_abbrev)

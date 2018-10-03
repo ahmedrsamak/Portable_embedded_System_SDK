@@ -10,7 +10,6 @@
 #define HAL_TIMER_H_
 #include "common.h"
 
-//#include "reg_addr.h"
 typedef enum
 {
 	TMR_STOP,
