@@ -18,5 +18,4 @@ void sev_segm_init(config_7segm * obj);
 void sev_segm_out(config_7segm * obj , u8 num);
 
 
-
 #endif /* ECU_7SEGM_H_ */

@@ -5,8 +5,8 @@
  *  Author: ahmed
  */ 
 
-#include <stdlib.h>
 #include "ecu_lcd.h"
+
 static void send_4bit_data(u8 data,config_lcd_pin * obj)
 {
    static short int i;
@@ -27,7 +27,7 @@ _delay_us(100);
  dio_write_pin(obj->ctrl_port,obj->E_pin,HIGH);
  _delay_us(1);
  dio_write_pin(obj->ctrl_port,obj->E_pin,LOW);
- _delay_ms(1);
+ _delay_ms(2);
 }
 
 void lcd_init(config_lcd_pin * obj)

@@ -5,7 +5,6 @@
  *  Author: ahmed
  */ 
 #include "hal_dio.h"
-int ret;
 void dio_set_port_dir(port_base port,dir mode)
 {
 	if (mode==OUTPUT)

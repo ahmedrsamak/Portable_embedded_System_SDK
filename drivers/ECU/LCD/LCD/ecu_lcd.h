@@ -11,7 +11,6 @@
 
 
 #include "DIO/hal_dio.h"
-#include <util/delay.h>
 #define bit_mode 4
 typedef enum
 {

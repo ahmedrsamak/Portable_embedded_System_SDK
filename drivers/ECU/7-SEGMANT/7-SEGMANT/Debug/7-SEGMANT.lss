@@ -3,13 +3,13 @@
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .text         000001e4  00000000  00000000  00000074  2**1
+  0 .text         000001e2  00000000  00000000  00000074  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  1 .data         00000000  00800060  00800060  00000258  2**0
+  1 .data         00000000  00800060  00800060  00000256  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  2 .bss          00000005  00800060  00800060  00000258  2**0
+  2 .bss          00000005  00800060  00800060  00000256  2**0
                   ALLOC
-  3 .comment      00000030  00000000  00000000  00000258  2**0
+  3 .comment      00000030  00000000  00000000  00000256  2**0
                   CONTENTS, READONLY
   4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000288  2**2
                   CONTENTS, READONLY
@@ -19,15 +19,15 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING
   7 .debug_abbrev 000007ef  00000000  00000000  00000ebf  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   00000490  00000000  00000000  000016ae  2**0
+  8 .debug_line   00000483  00000000  00000000  000016ae  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  00000120  00000000  00000000  00001b40  2**2
+  9 .debug_frame  00000120  00000000  00000000  00001b34  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    0000047d  00000000  00000000  00001c60  2**0
+ 10 .debug_str    0000047d  00000000  00000000  00001c54  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    0000036c  00000000  00000000  000020dd  2**0
+ 11 .debug_loc    0000036c  00000000  00000000  000020d1  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 00000060  00000000  00000000  00002449  2**0
+ 12 .debug_ranges 00000060  00000000  00000000  0000243d  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -77,7 +77,7 @@ Disassembly of section .text:
   6c:	b2 07       	cpc	r27, r18
   6e:	e1 f7       	brne	.-8      	; 0x68 <.do_clear_bss_loop>
   70:	0e 94 cf 00 	call	0x19e	; 0x19e <main>
-  74:	0c 94 f0 00 	jmp	0x1e0	; 0x1e0 <_exit>
+  74:	0c 94 ef 00 	jmp	0x1de	; 0x1de <_exit>
 
 00000078 <__bad_interrupt>:
   78:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
@@ -309,8 +309,8 @@ int main(void)
    sev_segm_init(&obj);
  1b4:	cf 01       	movw	r24, r30
  1b6:	0e 94 78 00 	call	0xf0	; 0xf0 <sev_segm_init>
- 1ba:	c0 e0       	ldi	r28, 0x00	; 0
-   for (int i=0;i<=9;i++)
+ 1ba:	c9 e0       	ldi	r28, 0x09	; 9
+   for (int i=9;i>=0;i--)
    {
 	   sev_segm_out(&obj,i);
  1bc:	6c 2f       	mov	r22, r28
@@ -332,19 +332,12 @@ int main(void)
  1d2:	e1 f7       	brne	.-8      	; 0x1cc <main+0x2e>
  1d4:	00 c0       	rjmp	.+0      	; 0x1d6 <main+0x38>
  1d6:	00 00       	nop
- 1d8:	cf 5f       	subi	r28, 0xFF	; 255
-	obj.pins[2]=2;
-	obj.pins[3]=3;
-	obj.port=portb;
-	
-   sev_segm_init(&obj);
-   for (int i=0;i<=9;i++)
- 1da:	ca 30       	cpi	r28, 0x0A	; 10
- 1dc:	79 f7       	brne	.-34     	; 0x1bc <main+0x1e>
- 1de:	ff cf       	rjmp	.-2      	; 0x1de <main+0x40>
+ 1d8:	c1 50       	subi	r28, 0x01	; 1
+ 1da:	80 f7       	brcc	.-32     	; 0x1bc <main+0x1e>
+ 1dc:	ff cf       	rjmp	.-2      	; 0x1dc <main+0x3e>
 
-000001e0 <_exit>:
- 1e0:	f8 94       	cli
+000001de <_exit>:
+ 1de:	f8 94       	cli
 
-000001e2 <__stop_program>:
- 1e2:	ff cf       	rjmp	.-2      	; 0x1e2 <__stop_program>
+000001e0 <__stop_program>:
+ 1e0:	ff cf       	rjmp	.-2      	; 0x1e0 <__stop_program>

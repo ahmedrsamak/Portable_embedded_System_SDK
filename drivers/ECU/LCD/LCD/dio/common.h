@@ -17,6 +17,8 @@
 #define NULL ((void *)0)
 #define F_CPU 8000000
 #include <avr/io.h>
+#include <stdlib.h>
+#include <util/delay.h>
 typedef unsigned char u8;
 typedef unsigned short int u16;
 typedef unsigned long int u32;

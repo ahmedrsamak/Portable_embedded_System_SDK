@@ -28,7 +28,7 @@ void uart_init(u32 baud_rate,parity_sel parity,stop_bits_sel stop_bits);
 void uart_write_byte(char write_byte);
 char uart_read_byte();
 void uart_write_text(char * write_text);
-
+void uart_write_num(s16 num);
 
 
 #endif /* HAL_UART_H_ */

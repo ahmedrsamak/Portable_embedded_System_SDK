@@ -27,6 +27,20 @@ void uart_write_byte(char write_byte)
 	UDR = write_byte;
 }
 
+void uart_write_num(s16 num)
+{
+	u8 ArrayIndex = 0;
+	char s8DisplayStr[6] = {0};
+	/* convert number to ASCII */
+
+	itoa(num, s8DisplayStr, 10);
+
+	for(ArrayIndex = 0; s8DisplayStr[ArrayIndex] != 0; ArrayIndex++)
+	{
+		uart_write_byte(s8DisplayStr[ArrayIndex]);
+	}		
+}
+
 char uart_read_byte()
 {
 	while (! ((UCSRA) & (1 << 7)));

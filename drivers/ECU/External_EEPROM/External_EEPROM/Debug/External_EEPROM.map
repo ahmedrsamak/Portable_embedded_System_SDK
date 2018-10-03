@@ -597,14 +597,14 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x1793
+.debug_info     0x00000000     0x1792
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x4e6 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega32/avr5/crtatmega32.o
  .debug_info    0x000004e6      0x24c ecu_ext_eeprom.o
  .debug_info    0x00000732      0x289 LCD/DIO/hal_dio.o
  .debug_info    0x000009bb      0x832 LCD/ecu_lcd.o
- .debug_info    0x000011ed      0x429 main.o
- .debug_info    0x00001616      0x17d TWI/hal_twi.o
+ .debug_info    0x000011ed      0x428 main.o
+ .debug_info    0x00001615      0x17d TWI/hal_twi.o
 
 .debug_abbrev   0x00000000      0xb30
  *(.debug_abbrev)

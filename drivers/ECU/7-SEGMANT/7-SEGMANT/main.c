@@ -16,7 +16,7 @@ int main(void)
 	obj.port=portb;
 	
    sev_segm_init(&obj);
-   for (int i=0;i<=9;i++)
+   for (int i=9;i>=0;i--)
    {
 	   sev_segm_out(&obj,i);
 	   _delay_ms(500);

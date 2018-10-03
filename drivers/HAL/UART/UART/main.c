@@ -9,7 +9,8 @@ char x;
 int main(void)
 {
     uart_init(115200,NONE,ONE_BIT);
-	uart_write_text("Start");
+	uart_write_text("Start\r\n");
+	uart_write_num(-124);
     while (1) 
     {
 		x=uart_read_byte();
