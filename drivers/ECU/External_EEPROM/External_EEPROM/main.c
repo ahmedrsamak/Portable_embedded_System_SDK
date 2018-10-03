@@ -25,7 +25,7 @@ int main(void)
 	_delay_ms(1000);
 	lcd_cmd(&LCD1,LCD_CLEAR);	
     ext_eeprom_init(100);
-	ext_eeprom_write(0,01,55);
+	ext_eeprom_write(0,01,22);
 	_delay_ms(10);
 	y=ext_eeprom_read(0,01);
 	lcd_cmd(&LCD1,LCD_CLEAR);
