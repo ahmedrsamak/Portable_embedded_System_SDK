@@ -5,7 +5,6 @@
  *  Author: ahmed
  */ 
 
-#include <stdlib.h>
 #include "ecu_lcd.h"
 static void send_4bit_data(u8 data,config_lcd_pin * obj)
 {

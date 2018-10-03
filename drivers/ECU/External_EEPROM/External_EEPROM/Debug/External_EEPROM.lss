@@ -258,9 +258,9 @@ void dio_write_pin(port_base port,u8 pin,state mode)
  182:	08 95       	ret
 
 00000184 <send_4bit_data>:
+ *  Author: ahmed
  */ 
 
-#include <stdlib.h>
 #include "ecu_lcd.h"
 static void send_4bit_data(u8 data,config_lcd_pin * obj)
 {
@@ -297,7 +297,7 @@ static void send_4bit_data(u8 data,config_lcd_pin * obj)
  1bc:	62 81       	ldd	r22, Z+2	; 0x02
  1be:	88 81       	ld	r24, Y
  1c0:	0e 94 a5 00 	call	0x14a	; 0x14a <dio_write_pin>
-#include <stdlib.h>
+
 #include "ecu_lcd.h"
 static void send_4bit_data(u8 data,config_lcd_pin * obj)
 {
