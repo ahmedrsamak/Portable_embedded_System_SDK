@@ -2,9 +2,9 @@
 # Automatically-generated file. Do not edit or delete the file
 ################################################################################
 
-dio\hal_dio.c
+dio\dio.c
 
-ecu_lcd.c
+lcd.c
 
 main.c
 

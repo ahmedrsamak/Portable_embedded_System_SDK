@@ -4,7 +4,7 @@
  * Created: 9/29/2018 10:37:37 PM
  * Author : ahmed
  */
-#include "hal_timer0.h"
+#include "timer0.h"
 int x;
 void test()
 {

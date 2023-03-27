@@ -2,7 +2,7 @@
 # Automatically-generated file. Do not edit or delete the file
 ################################################################################
 
-hal_uart.c
+uart.c
 
 main.c
 

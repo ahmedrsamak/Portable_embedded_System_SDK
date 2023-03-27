@@ -3,33 +3,33 @@ Archive member included to satisfy reference by file (symbol)
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
                               C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega32/avr5/crtatmega32.o (exit)
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_clear_bss.o)
-                              DIO/hal_dio.o (__do_clear_bss)
+                              DIO/dio.o (__do_clear_bss)
 
 Allocating common symbols
 Common symbol       size              file
 
 obj                 0x5               main.o
-ret                 0x2               DIO/hal_dio.o
+ret                 0x2               DIO/dio.o
 
 Discarded input sections
 
  .data          0x00000000        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega32/avr5/crtatmega32.o
  .bss           0x00000000        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega32/avr5/crtatmega32.o
- .text          0x00000000        0x0 DIO/hal_dio.o
- .data          0x00000000        0x0 DIO/hal_dio.o
- .bss           0x00000000        0x0 DIO/hal_dio.o
+ .text          0x00000000        0x0 DIO/dio.o
+ .data          0x00000000        0x0 DIO/dio.o
+ .bss           0x00000000        0x0 DIO/dio.o
  .text.dio_set_port_dir
-                0x00000000       0x28 DIO/hal_dio.o
+                0x00000000       0x28 DIO/dio.o
  .text.dio_write_port
-                0x00000000       0x22 DIO/hal_dio.o
+                0x00000000       0x22 DIO/dio.o
  .text.dio_read_port
-                0x00000000        0xa DIO/hal_dio.o
+                0x00000000        0xa DIO/dio.o
  .text.dio_read_pin
-                0x00000000       0x2a DIO/hal_dio.o
- COMMON         0x00000000        0x2 DIO/hal_dio.o
- .text          0x00000000        0x0 ecu_7segm.o
- .data          0x00000000        0x0 ecu_7segm.o
- .bss           0x00000000        0x0 ecu_7segm.o
+                0x00000000       0x2a DIO/dio.o
+ COMMON         0x00000000        0x2 DIO/dio.o
+ .text          0x00000000        0x0 7segm.o
+ .data          0x00000000        0x0 7segm.o
+ .bss           0x00000000        0x0 7segm.o
  .text          0x00000000        0x0 main.o
  .data          0x00000000        0x0 main.o
  .bss           0x00000000        0x0 main.o
@@ -81,8 +81,8 @@ user_signatures  0x00850000         0x00000400         rw !x
 Linker script and memory map
 
 LOAD C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega32/avr5/crtatmega32.o
-LOAD DIO/hal_dio.o
-LOAD ecu_7segm.o
+LOAD DIO/dio.o
+LOAD 7segm.o
 LOAD main.o
 START GROUP
 LOAD c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a
@@ -93,6 +93,8 @@ LOAD c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/b
 LOAD c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a
 LOAD C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega32/avr5\libatmega32.a
 END GROUP
+                0x00000000                __TEXT_REGION_ORIGIN__ = DEFINED (__TEXT_REGION_ORIGIN__)?__TEXT_REGION_ORIGIN__:0x0
+                0x00800060                __DATA_REGION_ORIGIN__ = DEFINED (__DATA_REGION_ORIGIN__)?__DATA_REGION_ORIGIN__:0x800060
                 0x00020000                __TEXT_REGION_LENGTH__ = DEFINED (__TEXT_REGION_LENGTH__)?__TEXT_REGION_LENGTH__:0x20000
                 0x0000ffa0                __DATA_REGION_LENGTH__ = DEFINED (__DATA_REGION_LENGTH__)?__DATA_REGION_LENGTH__:0xffa0
                 0x00010000                __EEPROM_REGION_LENGTH__ = DEFINED (__EEPROM_REGION_LENGTH__)?__EEPROM_REGION_LENGTH__:0x10000
@@ -272,16 +274,16 @@ END GROUP
                 0x0000007c                . = ALIGN (0x2)
  *(.text.*)
  .text.dio_set_pin_dir
-                0x0000007c       0x3a DIO/hal_dio.o
+                0x0000007c       0x3a DIO/dio.o
                 0x0000007c                dio_set_pin_dir
  .text.dio_write_pin
-                0x000000b6       0x3a DIO/hal_dio.o
+                0x000000b6       0x3a DIO/dio.o
                 0x000000b6                dio_write_pin
  .text.sev_segm_init
-                0x000000f0       0x3a ecu_7segm.o
+                0x000000f0       0x3a 7segm.o
                 0x000000f0                sev_segm_init
  .text.sev_segm_out
-                0x0000012a       0x74 ecu_7segm.o
+                0x0000012a       0x74 7segm.o
                 0x0000012a                sev_segm_out
  .text.main     0x0000019e       0x40 main.o
                 0x0000019e                main
@@ -381,9 +383,9 @@ END GROUP
 
 .comment        0x00000000       0x30
  *(.comment)
- .comment       0x00000000       0x30 DIO/hal_dio.o
+ .comment       0x00000000       0x30 DIO/dio.o
                                  0x31 (size before relaxing)
- .comment       0x00000030       0x31 ecu_7segm.o
+ .comment       0x00000030       0x31 7segm.o
  .comment       0x00000030       0x31 main.o
 
 .note.gnu.avr.deviceinfo
@@ -409,9 +411,9 @@ END GROUP
 .debug_aranges  0x00000000       0x90
  *(.debug_aranges)
  .debug_aranges
-                0x00000000       0x48 DIO/hal_dio.o
+                0x00000000       0x48 DIO/dio.o
  .debug_aranges
-                0x00000048       0x28 ecu_7segm.o
+                0x00000048       0x28 7segm.o
  .debug_aranges
                 0x00000070       0x20 main.o
 
@@ -421,44 +423,44 @@ END GROUP
 .debug_info     0x00000000      0xb6b
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x4e6 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega32/avr5/crtatmega32.o
- .debug_info    0x000004e6      0x29f DIO/hal_dio.o
- .debug_info    0x00000785      0x1a3 ecu_7segm.o
+ .debug_info    0x000004e6      0x29f DIO/dio.o
+ .debug_info    0x00000785      0x1a3 7segm.o
  .debug_info    0x00000928      0x243 main.o
 
 .debug_abbrev   0x00000000      0x7ef
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0x4a3 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega32/avr5/crtatmega32.o
- .debug_abbrev  0x000004a3       0xdb DIO/hal_dio.o
- .debug_abbrev  0x0000057e      0x10a ecu_7segm.o
+ .debug_abbrev  0x000004a3       0xdb DIO/dio.o
+ .debug_abbrev  0x0000057e      0x10a 7segm.o
  .debug_abbrev  0x00000688      0x167 main.o
 
-.debug_line     0x00000000      0x483
+.debug_line     0x00000000      0x467
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x115 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega32/avr5/crtatmega32.o
- .debug_line    0x00000115      0x12a DIO/hal_dio.o
- .debug_line    0x0000023f       0xcb ecu_7segm.o
- .debug_line    0x0000030a      0x179 main.o
+ .debug_line    0x00000115      0x122 DIO/dio.o
+ .debug_line    0x00000237       0xbf 7segm.o
+ .debug_line    0x000002f6      0x171 main.o
 
 .debug_frame    0x00000000      0x120
  *(.debug_frame)
- .debug_frame   0x00000000       0x74 DIO/hal_dio.o
- .debug_frame   0x00000074       0x88 ecu_7segm.o
+ .debug_frame   0x00000000       0x74 DIO/dio.o
+ .debug_frame   0x00000074       0x88 7segm.o
  .debug_frame   0x000000fc       0x24 main.o
 
-.debug_str      0x00000000      0x47d
+.debug_str      0x00000000      0x486
  *(.debug_str)
  .debug_str     0x00000000      0x196 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega32/avr5/crtatmega32.o
- .debug_str     0x00000196      0x244 DIO/hal_dio.o
-                                0x27d (size before relaxing)
- .debug_str     0x000003da       0x47 ecu_7segm.o
-                                0x1fa (size before relaxing)
- .debug_str     0x00000421       0x5c main.o
-                                0x27e (size before relaxing)
+ .debug_str     0x00000196      0x251 DIO/dio.o
+                                0x28a (size before relaxing)
+ .debug_str     0x000003e7       0x43 7segm.o
+                                0x207 (size before relaxing)
+ .debug_str     0x0000042a       0x5c main.o
+                                0x28f (size before relaxing)
 
 .debug_loc      0x00000000      0x36c
  *(.debug_loc)
- .debug_loc     0x00000000      0x105 DIO/hal_dio.o
- .debug_loc     0x00000105      0x20b ecu_7segm.o
+ .debug_loc     0x00000000      0x105 DIO/dio.o
+ .debug_loc     0x00000105      0x20b 7segm.o
  .debug_loc     0x00000310       0x5c main.o
 
 .debug_macinfo
@@ -481,8 +483,8 @@ END GROUP
 
 .debug_ranges   0x00000000       0x60
  *(.debug_ranges)
- .debug_ranges  0x00000000       0x38 DIO/hal_dio.o
- .debug_ranges  0x00000038       0x18 ecu_7segm.o
+ .debug_ranges  0x00000000       0x38 DIO/dio.o
+ .debug_ranges  0x00000038       0x18 7segm.o
  .debug_ranges  0x00000050       0x10 main.o
 
 .debug_macro

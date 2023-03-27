@@ -40,11 +40,11 @@ SUBDIRS :=  \
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
-../ecu_ext_eeprom.c \
-../LCD/DIO/hal_dio.c \
-../LCD/ecu_lcd.c \
+../ext_eeprom.c \
+../LCD/DIO/dio.c \
+../LCD/lcd.c \
 ../main.c \
-../TWI/hal_twi.c
+../TWI/twi.c
 
 
 PREPROCESSING_SRCS += 
@@ -54,32 +54,32 @@ ASM_SRCS +=
 
 
 OBJS +=  \
-ecu_ext_eeprom.o \
-LCD/DIO/hal_dio.o \
-LCD/ecu_lcd.o \
+ext_eeprom.o \
+LCD/DIO/dio.o \
+LCD/lcd.o \
 main.o \
-TWI/hal_twi.o
+TWI/twi.o
 
 OBJS_AS_ARGS +=  \
-ecu_ext_eeprom.o \
-LCD/DIO/hal_dio.o \
-LCD/ecu_lcd.o \
+ext_eeprom.o \
+LCD/DIO/dio.o \
+LCD/lcd.o \
 main.o \
-TWI/hal_twi.o
+TWI/twi.o
 
 C_DEPS +=  \
-ecu_ext_eeprom.d \
-LCD/DIO/hal_dio.d \
-LCD/ecu_lcd.d \
+ext_eeprom.d \
+LCD/DIO/dio.d \
+LCD/lcd.d \
 main.d \
-TWI/hal_twi.d
+TWI/twi.d
 
 C_DEPS_AS_ARGS +=  \
-ecu_ext_eeprom.d \
-LCD/DIO/hal_dio.d \
-LCD/ecu_lcd.d \
+ext_eeprom.d \
+LCD/DIO/dio.d \
+LCD/lcd.d \
 main.d \
-TWI/hal_twi.d
+TWI/twi.d
 
 OUTPUT_FILE_PATH +=External_EEPROM.elf
 
@@ -95,21 +95,21 @@ LINKER_SCRIPT_DEP+=
 
 
 # AVR32/GNU C Compiler
-./ecu_ext_eeprom.o: .././ecu_ext_eeprom.c
+./ext_eeprom.o: .././ext_eeprom.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
-LCD/DIO/hal_dio.o: ../LCD/DIO/hal_dio.c
+LCD/DIO/dio.o: ../LCD/DIO/dio.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
-LCD/ecu_lcd.o: ../LCD/ecu_lcd.c
+LCD/lcd.o: ../LCD/lcd.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
@@ -123,7 +123,7 @@ LCD/ecu_lcd.o: ../LCD/ecu_lcd.c
 	@echo Finished building: $<
 	
 
-TWI/hal_twi.o: ../TWI/hal_twi.c
+TWI/twi.o: ../TWI/twi.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 

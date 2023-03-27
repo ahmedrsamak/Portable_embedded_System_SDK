@@ -1,5 +1,5 @@
-main.d main.o: .././main.c .././LCD/ecu_lcd.h \
- .././LCD/../LCD/DIO/hal_dio.h .././LCD/../LCD/DIO/../../common.h \
+main.d main.o: .././main.c .././LCD/lcd.h .././LCD/../LCD/DIO/dio.h \
+ .././LCD/../LCD/DIO/../../common.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\sfr_defs.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\inttypes.h \
@@ -16,11 +16,11 @@ main.d main.o: .././main.c .././LCD/ecu_lcd.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h \
- .././ecu_ext_eeprom.h .././TWI/hal_twi.h .././TWI/../common.h
+ .././ext_eeprom.h .././TWI/twi.h .././TWI/../common.h
 
-.././LCD/ecu_lcd.h:
+.././LCD/lcd.h:
 
-.././LCD/../LCD/DIO/hal_dio.h:
+.././LCD/../LCD/DIO/dio.h:
 
 .././LCD/../LCD/DIO/../../common.h:
 
@@ -56,8 +56,8 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h:
 
-.././ecu_ext_eeprom.h:
+.././ext_eeprom.h:
 
-.././TWI/hal_twi.h:
+.././TWI/twi.h:
 
 .././TWI/../common.h:

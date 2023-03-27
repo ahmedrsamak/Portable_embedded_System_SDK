@@ -19,15 +19,15 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING
   7 .debug_abbrev 00000b30  00000000  00000000  00002036  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   00000a14  00000000  00000000  00002b66  2**0
+  8 .debug_line   000009e8  00000000  00000000  00002b66  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  000002b4  00000000  00000000  0000357c  2**2
+  9 .debug_frame  000002b4  00000000  00000000  00003550  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    00000699  00000000  00000000  00003830  2**0
+ 10 .debug_str    0000069a  00000000  00000000  00003804  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    00000bcd  00000000  00000000  00003ec9  2**0
+ 11 .debug_loc    00000bcd  00000000  00000000  00003e9e  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 000000e0  00000000  00000000  00004a96  2**0
+ 12 .debug_ranges 000000e0  00000000  00000000  00004a6b  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -98,7 +98,7 @@ Disassembly of section .text:
 00000092 <ext_eeprom_init>:
  *  Author: hossam adel
  */ 
-#include "ecu_ext_eeprom.h"
+#include "ext_eeprom.h"
 void ext_eeprom_init(u8 freq)
 {
 	TWI_Init(freq,0x01); //init eeprom with its frequency and microcontroller slave address 0x01 is not used for eeprom
@@ -261,7 +261,7 @@ void dio_write_pin(port_base port,u8 pin,state mode)
  *  Author: ahmed
  */ 
 
-#include "ecu_lcd.h"
+#include "lcd.h"
 static void send_4bit_data(u8 data,config_lcd_pin * obj)
 {
  184:	ef 92       	push	r14
@@ -298,7 +298,7 @@ static void send_4bit_data(u8 data,config_lcd_pin * obj)
  1be:	88 81       	ld	r24, Y
  1c0:	0e 94 a5 00 	call	0x14a	; 0x14a <dio_write_pin>
 
-#include "ecu_lcd.h"
+#include "lcd.h"
 static void send_4bit_data(u8 data,config_lcd_pin * obj)
 {
 	static short int i;

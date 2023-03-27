@@ -4,7 +4,7 @@
  * Created: 9/23/2018 11:19:56 AM
  * Author : ahmed
  */
-#include "ecu_7segm.h"
+#include "7segm.h"
 #include <util/delay.h> 
 config_7segm obj;
 int main(void)

@@ -5,14 +5,22 @@
  * Author : ahmed
  */ 
 
-#include <avr/io.h>
+#include "Driver/common.h"
+#include "Driver/adc.h"
+#include "Driver/uart.h"
 
 
 int main(void)
 {
-    /* Replace with your application code */
+adc_init(INTERNAL_REF);
+uart_init(9600,NONE,ONE_BIT);
+uart_write_text("Start");
     while (1) 
     {
+		uart_write_num(adc_read(0));
+		_delay_ms(500);
+		uart_write_text("\r\n");
+		
     }
 }
 

@@ -5,8 +5,8 @@
  * Author : ahmed
  */ 
 
-#include "ecu_rtc.h"
-#include "LCD/ecu_lcd.h"
+#include "rtc.h"
+#include "LCD/lcd.h"
 config_lcd_pin LCD1;
 int main(void)
 {

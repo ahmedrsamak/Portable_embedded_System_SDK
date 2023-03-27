@@ -6,7 +6,7 @@
  */ 
 
 
-#include "hal_dio.h"
+#include "dio.h"
 int main(void)
 {
    dio_set_port_dir(porta,OUTPUT);

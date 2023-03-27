@@ -2,7 +2,7 @@
 # Automatically-generated file. Do not edit or delete the file
 ################################################################################
 
-hal_timer0.c
+timer0.c
 
 main.c
 

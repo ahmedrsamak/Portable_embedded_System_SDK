@@ -29,16 +29,16 @@
     <eraseonlaunchrule>0</eraseonlaunchrule>
     <EraseKey />
     <AsfFrameworkConfig>
-      <framework-data xmlns="">
-        <options />
-        <configurations />
-        <files />
-        <documentation help="" />
-        <offline-documentation help="" />
-        <dependencies>
-          <content-extension eid="atmel.asf" uuidref="Atmel.ASF" version="3.42.0" />
-        </dependencies>
-      </framework-data>
+      <framework-data>
+  <options />
+  <configurations />
+  <files />
+  <documentation help="" />
+  <offline-documentation help="" />
+  <dependencies>
+    <content-extension eid="atmel.asf" uuidref="Atmel.ASF" version="3.44.1" />
+  </dependencies>
+</framework-data>
     </AsfFrameworkConfig>
     <avrtool>com.atmel.avrdbg.tool.simulator</avrtool>
     <avrtoolserialnumber />
@@ -136,16 +136,16 @@
     <Compile Include="common.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="DIO\hal_dio.c">
+    <Compile Include="DIO\dio.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="DIO\hal_dio.h">
+    <Compile Include="DIO\dio.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="ecu_7segm.c">
+    <Compile Include="7segm.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="ecu_7segm.h">
+    <Compile Include="7segm.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="main.c">

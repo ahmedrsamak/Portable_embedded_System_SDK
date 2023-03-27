@@ -2,9 +2,9 @@
 # Automatically-generated file. Do not edit or delete the file
 ################################################################################
 
-DIO\hal_dio.c
+DIO\dio.c
 
-ecu_7segm.c
+7segm.c
 
 main.c
 

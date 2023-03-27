@@ -19,15 +19,15 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING
   7 .debug_abbrev 000007ef  00000000  00000000  00000ebf  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   00000483  00000000  00000000  000016ae  2**0
+  8 .debug_line   00000467  00000000  00000000  000016ae  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  00000120  00000000  00000000  00001b34  2**2
+  9 .debug_frame  00000120  00000000  00000000  00001b18  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    0000047d  00000000  00000000  00001c54  2**0
+ 10 .debug_str    00000486  00000000  00000000  00001c38  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    0000036c  00000000  00000000  000020d1  2**0
+ 11 .debug_loc    0000036c  00000000  00000000  000020be  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 00000060  00000000  00000000  0000243d  2**0
+ 12 .debug_ranges 00000060  00000000  00000000  0000242a  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -165,7 +165,7 @@ void dio_write_pin(port_base port,u8 pin,state mode)
  * Created: 9/23/2018 11:25:06 AM
  *  Author: ahmed
  */ 
-#include "ecu_7segm.h"
+#include "7segm.h"
 void sev_segm_init(config_7segm * obj)
 {
   f0:	ef 92       	push	r14
@@ -191,7 +191,7 @@ void sev_segm_init(config_7segm * obj)
  112:	0e 94 3e 00 	call	0x7c	; 0x7c <dio_set_pin_dir>
  *  Author: ahmed
  */ 
-#include "ecu_7segm.h"
+#include "7segm.h"
 void sev_segm_init(config_7segm * obj)
 {
 	for (int i=0;i<4;i++)
@@ -284,7 +284,7 @@ void sev_segm_out(config_7segm * obj , u8 num)
  19c:	08 95       	ret
 
 0000019e <main>:
-#include "ecu_7segm.h"
+#include "7segm.h"
 #include <util/delay.h> 
 config_7segm obj;
 int main(void)

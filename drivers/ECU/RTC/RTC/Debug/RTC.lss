@@ -19,15 +19,15 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING
   7 .debug_abbrev 00000b85  00000000  00000000  0000224b  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   00000b83  00000000  00000000  00002dd0  2**0
+  8 .debug_line   00000b57  00000000  00000000  00002dd0  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  00000324  00000000  00000000  00003954  2**2
+  9 .debug_frame  00000324  00000000  00000000  00003928  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    00000691  00000000  00000000  00003c78  2**0
+ 10 .debug_str    00000692  00000000  00000000  00003c4c  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    00000e0b  00000000  00000000  00004309  2**0
+ 11 .debug_loc    00000e0b  00000000  00000000  000042de  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 000000f0  00000000  00000000  00005114  2**0
+ 12 .debug_ranges 000000f0  00000000  00000000  000050e9  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -178,7 +178,7 @@ void dio_write_pin(port_base port,u8 pin,state mode)
  */ 
 
 #include <stdlib.h>
-#include "ecu_lcd.h"
+#include "lcd.h"
 static void send_4bit_data(u8 data,config_lcd_pin * obj)
 {
  106:	ef 92       	push	r14
@@ -215,7 +215,7 @@ static void send_4bit_data(u8 data,config_lcd_pin * obj)
  140:	88 81       	ld	r24, Y
  142:	0e 94 66 00 	call	0xcc	; 0xcc <dio_write_pin>
 #include <stdlib.h>
-#include "ecu_lcd.h"
+#include "lcd.h"
 static void send_4bit_data(u8 data,config_lcd_pin * obj)
 {
 	static short int i;
@@ -631,8 +631,8 @@ void lcd_out_num(config_lcd_pin * obj,u8 y,u8 x,s16 num)
 
 000003a0 <main>:
 
-#include "ecu_rtc.h"
-#include "LCD/ecu_lcd.h"
+#include "rtc.h"
+#include "LCD/lcd.h"
 config_lcd_pin LCD1;
 int main(void)
 {
@@ -833,7 +833,7 @@ void rtc_read_time(u8 * hour,u8 * minute,u8 * second)
  *  Author: Eng/Hossam Adel
  *  Modified by Ahmed Samak
  */ 
-#include "../TWI/hal_twi.h"
+#include "../TWI/twi.h"
 void TWI_Init(u16 freq,u8 slave_addr)
 {
  506:	cf 93       	push	r28

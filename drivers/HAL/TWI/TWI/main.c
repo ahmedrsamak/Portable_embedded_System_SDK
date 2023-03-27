@@ -6,7 +6,7 @@
  */ 
 
 
-#include "hal_twi.h"
+#include "twi.h"
 #include <util/delay.h>
 int main(void)
 {

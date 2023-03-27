@@ -4,7 +4,7 @@
  * Created: 9/23/2018 2:17:45 PM
  * Author : ahmed
  */ 
-#include "hal_uart.h"
+#include "uart.h"
 char x;
 int main(void)
 {

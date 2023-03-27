@@ -2,13 +2,13 @@
 # Automatically-generated file. Do not edit or delete the file
 ################################################################################
 
-LCD\DIO\hal_dio.c
+LCD\DIO\dio.c
 
-LCD\ecu_lcd.c
+LCD\lcd.c
 
 main.c
 
-ecu_rtc.c
+rtc.c
 
-TWI\hal_twi.c
+TWI\twi.c
 
